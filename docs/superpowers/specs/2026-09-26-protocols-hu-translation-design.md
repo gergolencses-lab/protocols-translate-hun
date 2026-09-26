@@ -11,7 +11,11 @@
 
 A könyv angol Markdown-változatából (már elkészült, a PDF-ből konvertálva) teljes, kiadható minőségű magyar fordítást készítünk Markdownban. A fordítás hű az eredetihez, és úgy szól, mintha eleve magyarul írták volna.
 
-**Bemenet:** `source/en/protocols.md` – az angol Markdown. Ezt az ember teszi a repóba, a munka megkezdése előtt.
+**Bemenet:** `source/en/protocols.md` – az angol Markdown (kb. 227 000 szó). Szerkezete:
+- a fejezetek `##`, a protokollok `###`, a „What to Do” / „How It Works” blokkok `####`, az alcímek `#####` szintűek;
+- a lábjegyzetek `[^c1-12]` formájúak, a definíciójuk a Notes fejezetben van;
+- a Contents fejezet belső `](#horgony)` linkekből áll;
+- a képek `images/…` útvonalon hivatkozottak, maguk a képfájlok nincsenek a repóban.
 **Kimenet:** `book/protocols-hu.md` – a teljes magyar könyv egy fájlban, továbbá a fejezetenkénti munkafájlok, a döntésnapló és a lektori jelentések.
 
 ## 2. Nem cél
@@ -78,6 +82,8 @@ Ezek nélkül a teljes könyvre felskálázott hibák túl drágák lennének.
 - **Intézmények:** a közismert intézménynek a bevett magyar alakja (Stanfordi Egyetem, Harvard Egyetem), egyébként az eredeti név.
 - **Idézett könyvek:** ha van magyar kiadás, a magyar cím, első említéskor zárójelben az eredetivel. Ha nincs, az eredeti cím dőlten, első említéskor zárójelben nyersfordítással. Ha nem biztos, hogy van magyar kiadás, kérdés készül `fact` kategóriával.
 - **Markdown:** minden jelölő megmarad: címszint, lista, lábjegyzet-hivatkozás, link, kép, kiemelés, táblázat. A lábjegyzetjel ugyanahhoz a tartalomhoz tapad, mint az angolban.
+- **Változatlan elemek:** a lábjegyzet-azonosítók (`[^c1-12]`) és a képútvonalak (`images/…`). A kép alternatív szövege (`![…]`) viszont fordítandó.
+- **Belső horgonylinkek** (`](#chapter-1-protocols-for-sleep)`, a Contents fejezetben): az összefűzéskor a lefordított címsorok horgonyához igazodnak. A horgony GitHub-stílusú: kisbetű, az írásjelek törölve, szóköz → `-`, az ékezetes betűk maradnak.
 
 ## 7. Döntési pontok (a döntési kapunál az ember hagyja jóvá)
 
@@ -86,10 +92,10 @@ Ezek nélkül a teljes könyvre felskálázott hibák túl drágák lennének.
 | D1 | Tegezés vagy magázás? | **Tegezés** | A szöveg közvetlen, edzőszerű, felszólító („Do…”). A magázás merevvé tenné a protokollokat. |
 | D2 | Mértékegységek | **Átváltás SI-re** (°F→°C, font→kg, mérföld→km, láb/hüvelyk→m/cm, oz→g/ml), észszerű kerekítéssel, az eredeti érték nélkül | A magyar olvasónak a °F nem mond semmit. Minden átváltás bekerül a `work/checks/number-exceptions.tsv` naplóba, és a végső lektorálásnál ellenőrzött. |
 | D3 | A protokollcímek formája | „1. alvásprotokoll: …” | A magyar sorszámnév természetesebb, mint az „Alvásprotokoll 1”. A kereszthivatkozások is így szólnak. |
-| D4 | A *WHAT TO DO:* és hasonló visszatérő címkék | „A TEENDŐ:” | Regisztersemleges, rövid. |
+| D4 | A visszatérő `####` blokkcímek: *What to Do*, *How It Works* | „A teendő”, „Hogyan működik?” | Regisztersemleges, rövid; minden protokollban azonos. |
 | D5 | Jegyzetek (*Notes*) | Az angol hivatkozáslista marad, csak a fejezetcímek és a nem hivatkozás jellegű magyarázó mondatok fordítódnak | Szakirodalmi hivatkozásokat nem fordítunk. |
 | D6 | Tárgymutató (*Index*) | **Kimarad** a magyar könyvből | Az oldalszámok a Markdownban értelmetlenek. |
-| D7 | A könyv címe | „Protokollok” (alcím az eredeti alcím fordítása) | Az ember dönt. |
+| D7 | A könyv címe és alcíme (*An Operating Manual for the Human Body*) | „Protokollok – Használati útmutató az emberi testhez” | Az ember dönt. |
 | D8 | Copyright oldal | Az angol eredeti marad, magyar megjegyzéssel, hogy ez nem hivatalos fordítás | – |
 
 ## 8. Alapszójegyzék (javaslat, a döntési kapunál véglegesítendő)

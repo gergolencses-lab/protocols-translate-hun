@@ -13,7 +13,9 @@
 ## Előfeltételek (az ember végzi el, mielőtt a Codex elindul)
 
 1. A repó legyen **privát** (spec §11).
-2. Az elkészült angol Markdown kerüljön a `source/en/protocols.md` fájlba. Ha több fájlból áll, egyesítsd őket sorrendben egyetlen fájlba.
+2. ✔ Az angol Markdown a `source/en/protocols.md` fájlban van (227 179 szó). A mintaeszközökkel lefuttatott próbabontás eredménye:
+   - `--level 2` bontással veszteségmentes, 18 fejezet;
+   - `--max-words 1800 --min-words 500` mellett 188 részlet, ebből kb. 160 fordítandó (a Notes és az Index a D5/D6 szerint nem kap teljes fordítást).
 3. A Codex a legmagasabb elérhető gondolkodási szinten (reasoning effort: high) fusson.
 
 ## Globális megkötések
@@ -358,6 +360,7 @@ Elvárt: FAIL, `ModuleNotFoundError: No module named 'check'`
   headings_h2   ^## 
   headings_h3   ^### 
   headings_h4   ^#### 
+  headings_h5   ^##### 
   list_items    ^\s*(?:[-*+]|\d+\.)\s
   footnotes     \[\^[^\]]+\]
   sup           <sup>
@@ -799,19 +802,28 @@ git commit -m "tools: kontextuscsomag és összefűzés"
 
 - [ ] **2. lépés: Nézd meg a címsorszinteket.** Futtatás: `grep -n '^#\{1,3\} ' source/en/protocols.md | head -120`
 
-  Elvárt: a könyv felső szintű egységei azonos címszinten vannak. A PDF tartalomjegyzéke szerint ezek: Title Page, Disclaimer, Dedication, Introduction, Chapter 1–7, Before You Turn the Last Page, Acknowledgments, About the Author, Notes, Index, Copyright. A protokollok (pl. „Sleep Protocol 1: …”) egy szinttel lejjebb vannak. Ha a felső szint `##`, akkor a 4. lépésben `--level 2` kell. Ha a szerkezet ettől eltér (pl. a fejezetek nem címsorok), 🛑 **KAPU**: írd le az embernek, amit találtál, és javasolj bontási szintet.
+  Elvárt (a próbabontás alapján):
+  - egyetlen `#` címsor van, a könyvcím;
+  - a fejezetek `##` szintűek: Contents, Disclaimer, Dedication, Introduction, Chapter 1–7, Before You Turn the Last Page, Acknowledgments, About the Author, Notes, Index, Copyright;
+  - a protokollok `###`, a „What to Do” / „How It Works” blokkok `####` szintűek.
 
-- [ ] **3. lépés: Nézd meg a lábjegyzetformát.** Futtatás: `grep -c '\[\^' source/en/protocols.md; grep -c '<sup>' source/en/protocols.md`
+  A 4. lépésben tehát `--level 2` kell; a borító és a könyvcím a `00-front` fejezetbe kerül. Ha a szerkezet ettől eltér, 🛑 **KAPU**: írd le az embernek, amit találtál, és javasolj bontási szintet.
 
-  Ha mindkettő 0, de a szövegben vannak jegyzetszámok (pl. `¹` vagy `[12]`), vegyél fel egy új mintát a `check.py` struktúramintái közé (`footnotes_alt`), egy hozzá tartozó teszttel a `tests/test_check.py`-ban, és külön commitold (`tools: lábjegyzetminta`).
+- [ ] **3. lépés: Nézd meg a lábjegyzetformát.** Futtatás: `grep -c '^\[\^' source/en/protocols.md; grep -o '\[\^[^]]*\]' source/en/protocols.md | sort -u | wc -l`
 
-- [ ] **4. lépés: Bontsd fejezetekre.** Futtatás: `python tools/split_chapters.py source/en/protocols.md work/en --level 1` (vagy a 2. lépésben megállapított szinttel)
+  Elvárt: `1124` és `1124`.
+  - A hivatkozások `[^i-1]`, `[^c1-1]` … formájúak.
+  - A definíciók (`[^c1-1]: …`) mind a Notes fejezetben vannak, így a `footnotes` minta a hivatkozásokat és a definíciókat is számolja.
+
+  Ha eltér, 🛑 **KAPU**.
+
+- [ ] **4. lépés: Bontsd fejezetekre.** Futtatás: `python tools/split_chapters.py source/en/protocols.md work/en --level 2`
 
   Elvárt: 0-s kilépési kód, és a fejezetlista megfelel a 2. lépésnek.
 
 - [ ] **5. lépés: Bontsd részletekre.** Futtatás: `python tools/chunker.py work/en --max-words 1800 --min-words 500`
 
-  Elvárt: minden fejezetnek van `manifest.json`-ja. Egyetlen részlet se legyen 3000 szónál hosszabb; ha mégis van ilyen, nézd meg, és ha egy bekezdés ilyen hosszú, jegyezd fel a `STATUS.md` alá.
+  Elvárt: 188 részlet. A Notes fejezetben van egy kb. 13 700 szavas részlet, mert a lábjegyzet-definíciók között nincs üres sor. Ez rendben van, a Notes a D5 szerint angol marad. Minden más részlet 1850 szó alatt van.
 
 - [ ] **6. lépés: Ellenőrizd a veszteségmentességet.** Futtatás:
 
@@ -1068,8 +1080,10 @@ Minden fordítási feladat (10–17.) ezt hajtja végre a saját fejezet-azonos�
   - a 9. és 10. alvásprotokoll (kiegészítők, altatók) minden adagmondata `safety` kérdés vagy ✔ a tervben;
   - az 1. és 15. alvásprotokoll a jet lagről a D2 szerint vált mértékegységet és időt.
 
-### 11. feladat: Címoldal, Disclaimer, Dedication, Introduction
-- [ ] **1. lépés:** SZFE 1–11 minden érintett fejezetre. A Disclaimer jogi szöveg: pontos, semleges nyelvezet; eltérés esetén `safety`/`human` kérdés.
+### 11. feladat: Címoldal (`00-front`), Contents, Disclaimer, Dedication, Introduction
+- [ ] **1. lépés:** SZFE 1–11 minden érintett fejezetre.
+  - A Disclaimer jogi szöveg: pontos, semleges nyelvezet; eltérés esetén `safety`/`human` kérdés.
+  - A Contents fejezetben csak a link szövegét fordítsd. A `](#…)` horgonyok ekkor még angolul maradnak, a 19. feladat 4. lépése igazítja őket.
 - [ ] **2. lépés:** A címoldalon a D7 szerinti cím szerepeljen.
 
 ### 12. feladat: 2. fejezet – Protocols for Exercise (4 protokoll)
@@ -1090,7 +1104,7 @@ Minden fordítási feladat (10–17.) ezt hajtja végre a saját fejezet-azonos�
 ### 17. feladat: 7. fejezet – Protocols for Personal Growth (4 protokoll) és a hátsó rész
 - [ ] **1. lépés:** SZFE 1–11 a 7. fejezetre. James Hollis könyveinek magyar kiadását `fact` kérdésként ellenőrizd.
 - [ ] **2. lépés:** SZFE 1–11 a Before You Turn the Last Page, az Acknowledgments és az About the Author fejezetre. A köszönetnyilvánításban a személynevek változatlanok.
-- [ ] **3. lépés:** Notes (D5): csak a fejezetcímeket és a nem hivatkozás jellegű magyarázó mondatokat fordítsd. A szakirodalmi hivatkozások szó szerint maradnak. A struktúraellenőrzésnek ennél a fejezetnél is 0 FAIL-lel kell lefutnia.
+- [ ] **3. lépés:** Notes (D5): csak a fejezetcímeket (`### Chapter 1: …`) és a bevezető bekezdést („A note to the reader about the references…”) fordítsd. A `[^…]: …` definíciós sorok szó szerint maradnak, a fordításukhoz nem kell csomagot készíteni. A struktúraellenőrzésnek ennél a fejezetnél is 0 FAIL-lel kell lefutnia.
 - [ ] **4. lépés:** Copyright (D8): az angol szöveg marad, fölé kerül egy magyar megjegyzés: „Nem hivatalos, személyes használatra készült fordítás.” Az Index a D6 szerint kimarad.
 
 ---
@@ -1163,7 +1177,20 @@ EOF
   Elvárt:
   - minden címsor magyar, mondatszerű nagybetűzéssel (spec §6);
   - a protokollcímek a D3 formájúak;
-  - ha a könyvben van tartalomjegyzék-fejezet, annak tételei pontosan megegyeznek a címsorokkal.
+  - a Contents fejezet tételei szó szerint megegyeznek a címsorokkal.
+
+  Utána igazítsd a horgonyokat: a Contents részletfájljaiban minden `](#…)` célja a hozzá tartozó magyar címsor GitHub-stílusú horgonya legyen. Ellenőrzés (ha nincs kimenet, rendben van):
+
+```bash
+python - <<'PY'
+import re, pathlib
+book = pathlib.Path("book/protocols-hu.md").read_text(encoding="utf-8")
+slug = lambda h: re.sub(r"[^\w\- ]", "", h.strip().lower()).replace(" ", "-")
+anchors = {slug(m) for m in re.findall(r"^#{1,6} (.+)$", book, re.M)}
+for a in re.findall(r"\]\(#([^)]+)\)", book):
+    if a not in anchors: print("törött horgony:", a)
+PY
+```
 
   Commit: `book: összefűzés`.
 
