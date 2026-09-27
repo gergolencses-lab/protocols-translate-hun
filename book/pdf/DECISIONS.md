@@ -36,7 +36,7 @@ Minta: az eredeti könyv (a repó PDF-je) és az EPUB-döntések (`book/epub/DEC
   - hézag: minden oldal 30 mm alatt;
   - csak beágyazott Source Serif 4 és Source Sans 3;
   - 0 túlfutás;
-  - 47 protokoll, 1135 hivatkozás és jegyzet;
+  - 47 protokoll, 1124 hivatkozás és jegyzet (az első buildben 1135: 11 hamis, alsó indexből lett hivatkozás a VO₂/CO₂-ben, lásd `book/epub/DECISIONS.md`, 2. kör);
   - 62 tartalomjegyzék-tétel, mind oldalszámmal.
 - **Talált és javított hibák:**
   1. **Tartalék betűtípus (DejaVu).** A `Serif` és a `Sans` családnév ütközött a rendszer álneveivel, ezért egyedi nevekre cseréltük (`ProtoSerif`, `ProtoSans`). A beágyazott listák ◦/▪ jelölője hiányzik a betűtípusokból, ezért `–` és `·` lett helyette.
@@ -47,3 +47,10 @@ Minta: az eredeti könyv (a repó PDF-je) és az EPUB-döntések (`book/epub/DEC
   6. **Kétszer emelt jegyzetszám.** A `<sup>` és a link is felső indexet kapott. Most csak a `<sup>` emel.
   7. **Élőfej a fejezetnyitón.** A `@page chapter:first` nem működött, helyette `string(…, first-except)` rejti el. A címoldalon sincs lapszám.
 - **A skill eltérései:** az `html-to-pdf` skill A4-es szkriptjei (`convert.py`, `qa_gaps.py`) helyett saját A5-ös build (`tools/pdf/build_pdf.py`) és QA (`tools/pdf/qa.py`) készült ugyanazokkal a szabályokkal és módszerrel, arányosan skálázott küszöbökkel.
+
+## Újraépítés a 2. javítási kör után (2026-09-27)
+
+- **Eredmény:** 617 oldal (korábban 618). `tools/pdf/qa.py`: 0 hiba, 0 figyelmeztetés; az elvárt jegyzetszám 1135 → 1124.
+- **`notes.lua`, locale-hiba macOS-en:** a Python a gyermekfolyamatoknak `LC_CTYPE=UTF-8`-at ad, ebben a macOS C-könyvtára bájtonként Latin-1-ként kezeli az UTF-8 ékezeteket, így a Lua `lower()` és `%w` elrontotta a számozatlan fejezetek kulcsát (pl. „Bevezetés” → érvénytelen UTF-8 azonosító). A hivatkozások működtek, de a tesztek elbuktak. Javítás: előbb ékezetcsere (kis- és nagybetű), utána csak ASCII kisbetűsítés és `[^a-z0-9]`. Linuxon ugyanazt adja, mint korábban.
+- **macOS-függőségek:** `brew install pandoc epubcheck pango`; a WeasyPrinthez `DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/lib`, az EPUBCheckhez a Homebrew-s OpenJDK (`PATH=/opt/homebrew/opt/openjdk/bin:$PATH`, `EPUBCHECK_JAR=/opt/homebrew/opt/epubcheck/libexec/epubcheck.jar`).
+
