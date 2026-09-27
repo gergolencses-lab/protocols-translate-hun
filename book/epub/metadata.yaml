@@ -1,0 +1,27 @@
+title:
+  - type: main
+    text: Protokollok
+  - type: subtitle
+    text: Használati útmutató az emberi testhez
+creator:
+  - role: author
+    text: Andrew D. Huberman
+contributor:
+  - role: contributor
+    text: Jessica Wapner
+identifier:
+  - scheme: UUID
+    text: urn:uuid:36923859-020c-4df2-8643-1e569d5ff0cf
+lang: hu
+date: "2026"
+rights: >-
+  Nem hivatalos, személyes használatra készült fordítás. Használjátok
+  egészséggel, de vegyétek meg az eredeti könyvet mindenképp!
+description: >-
+  Andrew D. Huberman: Protocols – An Operating Manual for the Human Body
+  (Simon Element, 2026) nem hivatalos magyar fordítása. Használjátok
+  egészséggel, de vegyétek meg az eredeti könyvet mindenképp!
+cover-image: book/epub/cover/cover.jpg
+css: book/epub/epub.css
+toc-title: Tartalom
+page-progression-direction: ltr
