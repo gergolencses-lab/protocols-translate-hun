@@ -34,6 +34,7 @@
 9. **Tartalmi javítások a forrásban** (`book/protocols-hu.md`): a 6. fejezet „Learning Protocol 1–6” címkéi egységesen „tanulási protokoll” (négy eltérő fordításból); a Jegyzetek 3. fejezet-címe egyezik a törzsszövegével; az embléma alternatív szövege egységes; a Tartalom egy eltérő tétele és törött horgonya javítva.
 10. **Szűrőszintek:** a Pandoc Lua-szűrői a `--shift-heading-level-by` előtti szinteket látják (fejezet = 2, protokoll = 3, blokkcím = 4), nem az eltolás utániakat, ahogy a terv feltételezte.
 11. **Képek:** a Pandoc automatikus képaláírását (`implicit_figures`) kikapcsoltuk, különben a képek alatt megjelenne az alternatív szöveg.
+12. **Borító (E1, 2026-09-27):** a négy tervváltozatból (`cover/variants/`) az ember a 3.-at, a kétnyelvűt választotta: nagyban az eredeti PROTOCOLS logó, alatta a magyar PROTOKOLLOK cím. A `cover/cover.html` ennek önálló másolata; a `cover.jpg` ebből renderelődik (`tools/epub/render_cover.py`). Ugyanezt a képet használja az EPUB és a PDF is.
 
 ## Javítások a teljes átolvasás után (2026-09-27, 2. kör)
 
