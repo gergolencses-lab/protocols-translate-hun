@@ -14,6 +14,7 @@ local function protocol_header(h, t)
   local n, label, title = t:match("^(%d+)%. ([^:]*protokoll): (.+)$")
   if not n then return nil end
   h.classes:insert("protocol")
+  h.attributes["data-title"] = t -- teljes cím (PDF-könyvjelző)
   -- Magyar sorrend: „1. alvásprotokoll: Cím”. A szöveg változatlan (tartalomjegyzék),
   -- a CSS a „. ” és „: ” elválasztót elrejti, a számot körbe teszi.
   h.content = {

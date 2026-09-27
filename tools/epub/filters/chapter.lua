@@ -16,6 +16,7 @@ function Header(h)
   if n then
     h.classes:insert("chapter-opener")
     h.attributes["epub:type"] = "chapter"
+    h.attributes["data-title"] = t -- teljes cím (PDF-könyvjelző)
     -- A szöveg változatlan marad („1. fejezet: Alvásprotokollok”), így a
     -- tartalomjegyzékben is ez látszik; a tagolást a CSS végzi.
     h.content = {

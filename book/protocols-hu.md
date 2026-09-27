@@ -606,11 +606,7 @@ Az alvási szakaszok is kissé eltolódnak az életkor előrehaladtával. Csökk
 
 A bárányszámolást régóta ajánlják, hogy lefekvés előtt lecsillapítsa a túlpörgő agyat. Az elképzelés szerint, ha feladatot adunk magunknak, abbahagyjuk a nap eseményeinek rágódását és a másnapi teendőlistánk ismételgetését. Kiderült, hogy a bárányszámolás nem igazán jó éjszakai elfoglaltság. Allison Harvey, a UC Berkeley pszichológusa azt találta, hogy a bárányszámolás valójában megnehezítette az embereknek az elalvást.[^c1-140] Arra jutott, hogy ez az alapvető mentális kép nem köti le eléggé az ágyban fekvő, szorongásukat féken tartani próbáló emberek figyelmét. E fókusz nélkül, amely segítene megnyugtatni az agyunkat, ismét visszatérünk a rágódáshoz és a teendőlisták átnézéséhez. Egy későbbi vizsgálatban Harvey arra utasította a résztvevőket, hogy elalvás előtt szándékosan nyomják el azt a gondolatot, amely a legnagyobb valószínűséggel tolakodik be az elméjükbe. Az eredmények szerint ez nem segített – előre látható módon az elnyomni próbált gondolat csak még inkább foglalkoztatta őket.[^c1-141] *Ehelyett próbáld ki ezeket a kissé furcsa trükköket:*
 
-*Tegyél képzeletbeli sétát:* **Képzeld el, hogy az ágyadtól elsétálsz a postaládádhoz, majd végigmész**
-
-**az utcán egy közeli helyig, aztán ugyanazon vagy egy másik ismerős útvonalon**
-
-**hazamész.** Ha egy túlpörgő agyat egyszerű és lekötő feladattal foglalkoztatunk, az segíthet megállítani a rágódó gondolatokat. Az ilyen képzeletbeli séták lekötnek, de nem stimulálnak. És hajlamosak elringatni az embert.
+*Tegyél képzeletbeli sétát:* **Képzeld el, hogy az ágyadtól elsétálsz a postaládádhoz, majd végigmész az utcán egy közeli helyig, aztán ugyanazon vagy egy másik ismerős útvonalon hazamész.** Ha egy túlpörgő agyat egyszerű és lekötő feladattal foglalkoztatunk, az segíthet megállítani a rágódó gondolatokat. Az ilyen képzeletbeli séták lekötnek, de nem stimulálnak. És hajlamosak elringatni az embert.
 
 *Mozgasd a szemed az alább leírt minta szerint:* **Figyelmeztetés: Ez kissé bizarrnak fog hangzani, de sok embernél jól működik, és a vizsgálatok közvetve kezdik jelezni, miért.**
 
@@ -1060,9 +1056,7 @@ Ahogy korábban említettem, a nyugat felé utazás a legtöbb embernek általá
 
 Arra is ügyelj, hogy naplemente után egy–két órával erős mesterséges fényt nézz. Ne feledd, arra készülsz, hogy hamarosan nyugat felé repülsz, és később maradj ébren.
 
-**AMIKOR MEGÉRKEZEL AZ ÚJ ÚTI CÉLHOZ (AKKOR IS, HA**
-
-**KELET VAGY NYUGAT FELÉ REPÜLTÉL)**
+**AMIKOR MEGÉRKEZEL AZ ÚJ ÚTI CÉLHOZ (AKKOR IS, HA KELET VAGY NYUGAT FELÉ REPÜLTÉL)**
 
 - **Egyél úgy, mint a helyiek.** Ha megérkezéskor átveszed a helyi étkezési rendet – nagyjából ugyanakkor reggelizel, ebédelsz és vacsorázol, mint a helyiek, még akkor is, ha nem vagy éhes –, az segít átállítani a cirkadián órádat az új időzónára. Személy szerint utálok enni, amikor nem vagyok éhes (és imádok, amikor igen!), ezért én ezt a protokollt kihagyom. Ha nálad működik, csináld. Minél hamarabb át tudsz állni a helyi étkezési rendre, annál jobb. Sokan hatásosnak találják, ha a helyi reggeli időpontja előtt tizennégy–tizenhat órán át böjtölnek, hogy az időpont elérkeztekor nagyon éhesek legyenek.
 - **A minimum-hőmérsékleti időpontod ismeretében időzítsd helyesen a fénynek való kitettséget.** Ez az igazán hatásos eszköz a cirkadián órád gyors átállítására, de előbb meg kell ismerned a *minimum-hőmérsékleti időpontodat*. Erről bővebben a 3. és az 5. alvásprotokollban olvashatsz. Egyelőre tudd, hogy ez körülbelül két órával a szokásos ébredési időd előtt következik be. Ha általában reggel 7:00-kor ébredsz, a minimum-hőmérsékleti időpontod nagyon valószínűen 4:30 és 5:30 közé esik. Itt a lényeg: Ha a minimum-hőmérsékleti időpontod utáni egy–két órában erős fénynek teszed ki magad, úgy állítod át a cirkadián órádat, hogy a következő estéken korábban akarsz majd lefeküdni, a következő reggeleken pedig korábban ébredni. Tökéletes kelet felé utazáshoz. Ezzel szemben, ha a minimum-hőmérsékleti időpontod előtti egy–két órában teszed ki magad erős fénynek, úgy állítod át a cirkadián órádat, hogy a következő estéken később akarsz majd lefeküdni, a következő reggeleken pedig később ébredni. Tökéletes nyugat felé utazáshoz.
@@ -1587,9 +1581,7 @@ A képlet neve Katch–McArdle-képlet.[^c2-96] Nagyjából öt perc alatt kisz�
 
   Az én esetemben tehát: BMR = 370 + (21,6 × 90) = 370 + (1944) = 2314 kalória naponta, vagyis ennyi a BMR-em.
 
-**Szorozd meg a BMR-edet aktivitási szorzóval, hogy figyelembe vedd, mennyire vagy aktív**
-
-**a nap folyamán:**
+**Szorozd meg a BMR-edet aktivitási szorzóval, hogy figyelembe vedd, mennyire vagy aktív a nap folyamán:**
 
 - **Ülő életmód (egyáltalán nem edzel):** BMR × 1,2
 - **Enyhén aktív (pl. napi 7000–10 000 lépést sétálsz):** BMR × 1,375
@@ -3972,9 +3964,7 @@ Más szóval Oettingen rájött, hogyan aktiválhatnak az emberek sürgetettség
 
 A WOOP *W* lépése csak néhány másodpercet vesz igénybe. Nem kell sok részletet megadnod, de néhány segít. Például az, hogy „Boldog és sikeres akarok lenni”, túl általános. Ahelyett, hogy arra összpontosítanál, mit szeretnél érezni, nevezd meg azokat a készségeket, képesítéseket és jártasságokat, amelyeket szeretnél megszerezni.
 
-**EREDMÉNY: Itt arra gondolsz, mit szeretnél érezni attól, hogy**
-
-**elérted a célt.**
+**EREDMÉNY: Itt arra gondolsz, mit szeretnél érezni attól, hogy elérted a célt.**
 
 - **Például:**
   - „Átélhetem majd annak az izgalmát, hogy más nagyszerű zenészekkel együtt lépek fel élőben, és tudhatom, hogy másoknak is olyan élőzenei élményt adok, amelyet én is annyira ismerek és szeretek.”
