@@ -84,6 +84,11 @@ h1.no-title { visibility: hidden; height: 0; margin: 0; font-size: 1pt; line-hei
 
 /* ---------- Szakaszok, oldaltörés (P5) ---------- */
 section.level1 { page: chapter; break-before: page; }
+/* A rövid záró szakaszok (Köszönetnyilvánítás, A szerzőről) ne kezdjenek kényszerűen
+   friss oldalt: az előző szakasz alján maradt hely helyett folytatódjanak ott (P5 elve
+   a hátsó anyagra is: otthoni nyomtatásnál a majdnem üres oldal pazarlás). A Jegyzetek
+   és a Copyright – önálló, más regiszterű szakaszok – megtartják a friss oldalt. */
+section#köszönetnyilvánítás, section#a-szerzőről { break-before: avoid; }
 section.level1 > h1:not(.chapter-opener) { string-set: chapter content(text), book "Protokollok"; }
 h1.chapter-opener { string-set: book "Protokollok"; }
 h1.chapter-opener .chapter-title { string-set: chapter content(text); }
@@ -179,7 +184,8 @@ nav.toc h1 { margin-top: 8mm; }
 nav.toc ol { list-style: none; margin: 0; padding: 0; }
 nav.toc li { margin: 0; }
 nav.toc a { display: block; }
-nav.toc a::after { content: leader(". ") target-counter(attr(href url), page); }
+nav.toc a .toc-tail { white-space: nowrap; }
+nav.toc a .toc-tail::after { content: leader(". ") target-counter(attr(data-target url), page); }
 nav.toc li.toc-1 > a { font-family: "ProtoSans", sans-serif; font-weight: 600; font-size: 9pt; margin-top: 2.6mm; }
 nav.toc li.toc-2 > a { font-size: 8.4pt; line-height: 11pt; padding-left: 5mm; margin-top: .6mm; }
 
