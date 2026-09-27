@@ -1,32 +1,28 @@
-<!doctype html>
-<html lang="hu">
-<head>
-<meta charset="utf-8">
-<title>Protokollok – borító</title>
+<!doctype html><html lang="hu"><head><meta charset="utf-8"><title>Protokollok – borító</title>
 <style>
-  /* 1600×2560 px borító, az eredeti címoldal (PDF 3. oldal) szórácsos logójának mintájára. */
-  @font-face { font-family: "Montserrat"; src: url("fonts/Montserrat.ttf"); font-weight: 100 900; }
-  html, body { margin: 0; width: 1600px; height: 2560px; background: #fff; color: #111; }
-  body { font-family: "Montserrat", sans-serif; display: flex; flex-direction: column; align-items: center; }
-  .logo { margin-top: 520px; display: grid; grid-template-columns: repeat(3, 215px); row-gap: 0; justify-items: center; }
-  .logo span { font-size: 300px; font-weight: 800; line-height: 1; letter-spacing: 0; }
-  .logo .dot { width: 205px; height: 205px; margin-top: 42px; border-radius: 50%;
-               background: radial-gradient(circle, #d4d4d4 0%, #d9d9d9 55%, rgba(217,217,217,.55) 70%, rgba(255,255,255,0) 73%); }
-  .logo .last { grid-column: 1 / span 3; display: flex; gap: 0; justify-content: center; }
-  .logo .last span { width: 215px; text-align: center; }
-  .sub { margin-top: 170px; font-size: 64px; font-weight: 600; letter-spacing: .16em; text-align: center; line-height: 1.45; }
-  .author { margin-top: 250px; font-size: 54px; font-weight: 600; letter-spacing: .12em; text-align: center; line-height: 1.5; }
-  .author small { display: block; font-size: 42px; font-weight: 500; letter-spacing: .06em; }
-</style>
-</head>
-<body>
-  <div class="logo">
-    <span>P</span><span>R</span><span>O</span>
-    <span>T</span><div class="dot"></div><span>K</span>
-    <span>O</span><span>L</span><span>L</span>
-    <div class="last"><span>O</span><span>K</span></div>
-  </div>
-  <div class="sub">HASZNÁLATI ÚTMUTATÓ<br>AZ EMBERI TESTHEZ</div>
-  <div class="author">ANDREW D. HUBERMAN, PhD<small>Jessica Wapner közreműködésével</small></div>
-</body>
-</html>
+/* 1600×2560 px borító: az eredeti PROTOCOLS logó + magyar cím (a 3. tervváltozat, variants/3-ketnyelvu.html). */
+@font-face { font-family: "M"; src: url("fonts/Montserrat.ttf"); font-weight: 100 900; }
+html, body { margin: 0; width: 1600px; height: 2560px; }
+body { font-family: "M", sans-serif; display: flex; flex-direction: column; align-items: center; }
+.grid { display: grid; justify-items: center; align-items: center; }
+.grid span { font-weight: 800; line-height: 1; }
+.sub { font-weight: 600; letter-spacing: .16em; text-align: center; line-height: 1.45; }
+.author { font-weight: 600; letter-spacing: .12em; text-align: center; line-height: 1.5; }
+.author small { display: block; font-weight: 500; letter-spacing: .06em; }
+</style><style>
+body { background:#fff; color:#111; }
+.grid { margin-top: 560px; grid-template-columns: repeat(3, 230px); }
+.grid span { font-size: 290px; }
+.dot { width: 200px; height: 200px; border-radius: 50%; margin-top: 38px;
+       background: radial-gradient(circle, #cfcfcf 0%, #d6d6d6 58%, rgba(214,214,214,.5) 68%, rgba(255,255,255,0) 72%); }
+.bar { width: 690px; height: 26px; background:#111; margin-top: 40px; }
+.hu { margin-top: 64px; font-size: 76px; font-weight: 700; letter-spacing: .34em; padding-left: .34em; color:#111; }
+.sub { margin-top: 120px; font-size: 54px; color:#444; }
+.author { margin-top: 230px; font-size: 52px; } .author small { font-size: 40px; }
+</style></head><body>
+<div class="grid"><span>P</span><span>R</span><span>O</span><span>T</span><div class="dot"></div><span>C</span><span>O</span><span>L</span><span>S</span></div>
+<div class="bar"></div>
+<div class="hu">PROTOKOLLOK</div>
+<div class="sub">HASZNÁLATI ÚTMUTATÓ<br>AZ EMBERI TESTHEZ</div>
+<div class="author">ANDREW D. HUBERMAN, PhD<small>Jessica Wapner közreműködésével</small></div>
+</body></html>
