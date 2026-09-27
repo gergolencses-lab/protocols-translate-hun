@@ -6,14 +6,19 @@ package.path = PANDOC_SCRIPT_FILE:match("(.*/)") .. "../../epub/filters/?.lua;" 
 local C = require("common")
 
 local ACCENTS = { ["á"]="a", ["é"]="e", ["í"]="i", ["ó"]="o", ["ö"]="o", ["ő"]="o",
-                  ["ú"]="u", ["ü"]="u", ["ű"]="u" }
+                  ["ú"]="u", ["ü"]="u", ["ű"]="u",
+                  ["Á"]="a", ["É"]="e", ["Í"]="i", ["Ó"]="o", ["Ö"]="o", ["Ő"]="o",
+                  ["Ú"]="u", ["Ü"]="u", ["Ű"]="u" }
 
+-- Locale-független: macOS-en a Python által beállított LC_CTYPE=UTF-8 mellett a
+-- lower() és a %w bájtonként Latin-1-ként kezeli az UTF-8 ékezeteket, és elrontja őket.
 local function chapter_key(title)
   local n = title:match("^(%d+)%. fejezet")
   if n then return string.format("c%02d", tonumber(n)) end
-  local s = title:lower()
+  local s = title
   for k, v in pairs(ACCENTS) do s = s:gsub(k, v) end
-  return (s:gsub("[^%w]+", "-"):gsub("^-+", ""):gsub("-+$", ""))
+  s = s:gsub("[A-Z]", string.lower)
+  return (s:gsub("[^a-z0-9]+", "-"):gsub("^-+", ""):gsub("-+$", ""))
 end
 
 function Pandoc(doc)
