@@ -39,7 +39,7 @@
   - [3. stresszszabályozási protokoll: Végezz alvás nélküli mély pihenést (NSDR-t), hogy ellensúlyozd a stresszt](#3-stresszszabályozási-protokoll-végezz-alvás-nélküli-mély-pihenést-nsdr-t-hogy-ellensúlyozd-a-stresszt)
   - [4. stresszszabályozási protokoll: Ébredés után azonnal végezz mikromeditációt](#4-stresszszabályozási-protokoll-ébredés-után-azonnal-végezz-mikromeditációt)
   - [5. stresszszabályozási protokoll: Fokozd a reggeli kortizol- és katekolamincsúcsodat](#5-stresszszabályozási-protokoll-fokozd-a-reggeli-kortizol--és-katekolamincsúcsodat)
-  - [6. stresszszabályozási protokoll: Fontolj meg specifikus étrend-kiegészítőket a túlzott stressz ellensúlyozására](#6-stresszszabályozási-protokoll-fontolj-meg-specifikus-étrend-kiegészítőket-a-túlzott-stressz-ellensúlyozására)
+  - [6. stresszszabályozási protokoll: Fontolj meg egyes étrend-kiegészítőket a túlzott stressz ellensúlyozására](#6-stresszszabályozási-protokoll-fontolj-meg-egyes-étrend-kiegészítőket-a-túlzott-stressz-ellensúlyozására)
 - [4. fejezet: Táplálkozási protokollok](#4-fejezet-táplálkozási-protokollok)
   - [1. táplálkozási protokoll: Az elfogyasztott ételek legalább 90%-a legyen feldolgozatlan vagy minimálisan feldolgozott](#1-táplálkozási-protokoll-az-elfogyasztott-ételek-legalább-90-a-legyen-feldolgozatlan-vagy-minimálisan-feldolgozott)
   - [2. táplálkozási protokoll: Gondoskodj a folyadékpótlásról](#2-táplálkozási-protokoll-gondoskodj-a-folyadékpótlásról)
@@ -55,12 +55,12 @@
   - [4. fényprotokoll: Tedd ki a felső- és alsótested bőrét nappal napfénynek](#4-fényprotokoll-tedd-ki-a-felső--és-alsótested-bőrét-nappal-napfénynek)
   - [5. fényprotokoll: Tedd ki a bőrödet és a szemedet hosszú hullámhosszú (vörös, közeli infravörös és infravörös) fénynek](#5-fényprotokoll-tedd-ki-a-bőrödet-és-a-szemedet-hosszú-hullámhosszú-vörös-közeli-infravörös-és-infravörös-fénynek)
 - [6. fejezet: Fókusz-, motiváció- és tanulási protokollok](#6-fejezet-fókusz--motiváció--és-tanulási-protokollok)
-  - [1. fókusz- és éberségprotokoll: Válts éber és fókuszált állapotba](#1-fókusz--és-éberségprotokoll-válts-éber-és-fókuszált-állapotba)
+  - [1. tanulási protokoll: Válts éber és fókuszált állapotba](#1-tanulási-protokoll-válts-éber-és-fókuszált-állapotba)
   - [2. tanulási protokoll: Mentális kontrasztálással érj el „sürgetettségi állapotot”, és valósítsd meg a céljaidat](#2-tanulási-protokoll-mentális-kontrasztálással-érj-el-sürgetettségi-állapotot-és-valósítsd-meg-a-céljaidat)
   - [3. tanulási protokoll: Fogadd el a hibákat, hogy javítsd a teljesítményedet](#3-tanulási-protokoll-fogadd-el-a-hibákat-hogy-javítsd-a-teljesítményedet)
-  - [4. tanulás utáni alvásprotokoll: Részesítsd előnyben az alvást a tanulási szakasz utáni éjszakán](#4-tanulás-utáni-alvásprotokoll-részesítsd-előnyben-az-alvást-a-tanulási-szakasz-utáni-éjszakán)
-  - [5. mikroszünet-protokoll: Építs be mikroszüneteket a tanulási szakaszaidba](#5-mikroszünet-protokoll-építs-be-mikroszüneteket-a-tanulási-szakaszaidba)
-  - [6. mentális gyakorlási protokoll: Növeld az új készségek és információk megőrzését mentális gyakorlással](#6-mentális-gyakorlási-protokoll-növeld-az-új-készségek-és-információk-megőrzését-mentális-gyakorlással)
+  - [4. tanulási protokoll: Részesítsd előnyben az alvást a tanulási szakasz utáni éjszakán](#4-tanulási-protokoll-részesítsd-előnyben-az-alvást-a-tanulási-szakasz-utáni-éjszakán)
+  - [5. tanulási protokoll: Építs be mikroszüneteket a tanulási szakaszaidba](#5-tanulási-protokoll-építs-be-mikroszüneteket-a-tanulási-szakaszaidba)
+  - [6. tanulási protokoll: Növeld az új készségek és információk megőrzését mentális gyakorlással](#6-tanulási-protokoll-növeld-az-új-készségek-és-információk-megőrzését-mentális-gyakorlással)
 - [7. fejezet: Személyes fejlődési protokollok](#7-fejezet-személyes-fejlődési-protokollok)
   - [1. személyes fejlődési protokoll: Az elkalandozó figyelem helyett jelenhez kötött tudatosság](#1-személyes-fejlődési-protokoll-az-elkalandozó-figyelem-helyett-jelenhez-kötött-tudatosság)
   - [2. személyes fejlődési protokoll: Alkalmazd James Hollis útmutatóját a lehető legjobb életed kialakításához](#2-személyes-fejlődési-protokoll-alkalmazd-james-hollis-útmutatóját-a-lehető-legjobb-életed-kialakításához)
@@ -1883,7 +1883,7 @@ Itt mutatom be ezt a mozdulatot: [protocolsbook.com/videos](http://www.protocols
 
 ## 3. fejezet: Protokollok a stressz szabályozásához
 
-![Fejezet emblémája](images/chapter-emblem.jpeg)
+![Fejezetembléma](images/chapter-emblem.jpeg)
 
 Én sem szeretem, ha stresszes vagyok, de idővel hozzászoktam ahhoz a gondolathoz, hogy az élet elkerülhetetlenül stresszel jár. Legyen szó középiskolai osztálytársaimról – akiknek többsége nagyon céltudatos volt –, az általam megismert sportolókról, vagy a körülöttem lévő diákokról, professzorokról, technológiai és kreatív területen dolgozó emberekről, mindig azt tapasztaltam, hogy a stressz elkíséri az ambíciót, és sok kiemelkedő teljesítményű ember számára állandó társa.
 
@@ -2294,7 +2294,7 @@ A *Rhodiola rosea* kipróbálására kétféle megközelítést javaslok. Az els
 
 ## 4. fejezet: Táplálkozási protokollok
 
-![Fejezetjelvény](images/chapter-emblem.jpeg)
+![Fejezetembléma](images/chapter-emblem.jpeg)
 
 Táplálkozási tanácsok mindenütt vannak, és gyakran ellentmondanak egymásnak. Egyél húst. Ne egyél húst. Reggelizz. Böjtölj délig. A szénhidrát az ellenség. A szénhidrát segít zsírt égetni. A zsírok kulcsfontosságúak. A zsírok ártanak. A cukor méreg. Nem a cukor, hanem a kalória számít. A magolajok egészségesek. A magolajok ártanak… Ettől bárkinek megfájdulhat a feje.
 
@@ -3528,7 +3528,7 @@ Ezt a fejezetet ezzel az alapfolyamattal kezdtem, mert bármi megtanulására al
 
 Az edzéshez hasonlóan az SDAP sem könnyű. Idővel azonban minden lépés ismerőssé válik. Ha így tekintesz az SDAP-ra – olyan folyamatként, amely következetesen elvezet a kívánt végcélhoz –, örömforrássá válhat.
 
-### 1. fókusz- és éberségprotokoll: Válts éber és fókuszált állapotba
+### 1. tanulási protokoll: Válts éber és fókuszált állapotba
 
 #### Mit tegyél?
 
@@ -4069,12 +4069,12 @@ Ez a felismerés az oktatásban is hasznosítható. A hibák és a plaszticitás
 
 A hiba elkövetése utáni közvetlen pillanat döntő fontosságú a tanulás szempontjából. A negatív reakciók rendszerint 100 ms-on belül jelentkeznek,[^c6-180] de a szimpatikus aktiváció tovább tart, és – ahogy erről már sokszor beszéltünk – a fokozott fókuszhoz és plaszticitáshoz kedvező közeget teremt. Ez azt jelenti, hogy a rendszereink ezekben a közvetlenül a hiba utáni pillanatokban felkészültek a tanulásra. Ez a belső állapot az egész tanulási szakasz hatékonyságát növeli. A motoros tanulással foglalkozó vizsgálatok azt mutatják, hogy az egy próbán belüli és a próbák közötti hibák egyaránt értékes jelzéseket adnak a plaszticitás és a tanulás számára.[^c6-181] Ha egy nyelvóráról, teniszleckéről vagy más tanulási szakaszról úgy távozol, hogy azt gondolod: „A francba, azt az egy részt egyszerűen nem tudtam jól megcsinálni”, akkor gratulálok! Beindult az egy próbán belüli és a próbák közötti hibák által kiváltott tanulási folyamat. Kétségkívül jobban fog menni, amikor legközelebb visszatérsz… de csak akkor, ha megteszed, ami a következő protokollban szerepel.
 
-### 4. tanulás utáni alvásprotokoll: Részesítsd előnyben az alvást a tanulási szakasz utáni éjszakán
+### 4. tanulási protokoll: Részesítsd előnyben az alvást a tanulási szakasz utáni éjszakán
 
 #### Mit tegyél?
 
 - **Aludj eleget a tanulási szakaszt követő éjszakán.** Ekkor történik ténylegesen a plaszticitás, ezért ez az SDAP-folyamat nélkülözhetetlen lépése.
-- **Fokozd a plaszticitást azzal, hogy a tanulási szakasz után bármikor 10–30 percig NSDR-t végzel.** Ha ezt előtte végzed, ahogyan e fejezet 1. fókusz- és éberségprotokolljában leírtam, fokozza a szellemi és fizikai frissességedet.
+- **Fokozd a plaszticitást azzal, hogy a tanulási szakasz után bármikor 10–30 percig NSDR-t végzel.** Ha ezt előtte végzed, ahogyan e fejezet 1. tanulási protokolljában leírtam, fokozza a szellemi és fizikai frissességedet.
 
 #### Hogyan működik?
 
@@ -4082,7 +4082,7 @@ Alvás közben az agyunk gyorsan visszajátssza, amit napközben megpróbáltunk
 
 Az eredmények arra utalnak, hogy a tanulási szakaszt követő első éjszaka REM-alvása a legfontosabb a tanulás konszolidációs folyamatában – ezt a jelenséget *tanulást követő éjszaka hatásának* nevezik –, de attól függően, melyik készséget próbálod elsajátítani, a mély, lassú hullámú alvás fontosabb lehet.[^c6-183] Én nem elemezném ezt ennyire finoman. Inkább igyekezz minden éjszaka eleget aludni – a számodra megfelelő mennyiséget –, de különösen akkor, amikor új információk és készségek elsajátításán dolgozol. Az 1. fejezetben meghatározom, mit értek elegendő alváson, és sok eszközt adok ahhoz, hogy ezt elérd. Ha azonban rosszul alszol egy éjszaka, ne rontsd tovább a helyzetet azzal, hogy a kiesett tanulás miatt aggódsz. Másnap reggel végezz NSDR-t, majd azon az éjszakán állítsd vissza az alvásrenddet.
 
-### 5. mikroszünet-protokoll: Építs be mikroszüneteket a tanulási szakaszaidba
+### 5. tanulási protokoll: Építs be mikroszüneteket a tanulási szakaszaidba
 
 #### Mit tegyél?
 
@@ -4108,7 +4108,7 @@ Némileg véletlenszerűen iktass be mikroszüneteket. Az, hogy milyen gyakran t
 
 Az ébrenléti mikroszünetek nagyszerű eszközt jelentenek a tanulás és a plaszticitás felgyorsítására, amelyet viselkedéses és idegtudományi eredmények támasztanak alá. Azt javaslom, próbáld ki őket.
 
-### 6. mentális gyakorlási protokoll: Növeld az új készségek és információk megőrzését mentális gyakorlással
+### 6. tanulási protokoll: Növeld az új készségek és információk megőrzését mentális gyakorlással
 
 #### Mit tegyél?
 
@@ -5091,7 +5091,7 @@ Megjegyzés az olvasónak az alábbi hivatkozásokról: A főszöveg konkrét á
 [^c2-130]: Shahab Alizadeh et al., “Resistance Training Induces Improvements in Range of Motion: A Systematic Review and Meta-Analysis,” *Sports Medicine* 53, no. 3 (January 2023): 707–22, <https://doi.org/10.1007/s40279-022-01804-x>; Morton Rosenfeldt et al., “Comparison of Resistance Training vs Static Stretching on Flexibility and Maximal Strength in Healthy Physically Active Adults,” *BMC Sports Science, Medicine and Rehabilitation* 16 (June 2024): 142, <https://doi.org/10.1186/s13102-024-00934-1>; Sebastian Vetter et al., “The Effects of Eccentric Strength Training on Flexibility and Strength in Healthy Samples and Laboratory Settings: A Systematic Review,” *Frontiers in Physiology* 13 (April 2022): 873370, <https://doi.org/10.3389/fphys.2022.873370>; Francesco Favre et al., “Influence of Resistance Training on Joint Flexibility in Healthy Adults: A Systematic Review, Meta-Analysis, and Meta-Regression,” *Journal of Strength & Conditioning Research* 39, no. 3 (December 2024): 386–97, <https://doi.org/10.1519/JSC.0000000000005000>.
 [^c2-131]: Milo Wolf et al., “Lengthened Partial Repetitions Elicit Similar Muscular Adaptations as Full Range of Motion Repetitions During Resistance Training in Trained Individuals,” *PeerJ* 13 (February 2025): e18904, <https://doi.org/10.7717/peerj.18904>; Alizadeh et al., “Resistance Training Induces Improvements.”
 
-### 3. fejezet: Stresszkezelési protokollok
+### 3. fejezet: Protokollok a stressz szabályozásához
 
 [^c3-1]: Modupe Akinola et al., “Adaptive Appraisals of Anxiety Moderate the Association Between Cortisol Reactivity and Performance in Salary Negotiations,” *PLOS One* 11, no. 12 (December 2016): e0167977, <https://doi.org/10.1371/journal.pone.0167977>; Alia J. Crum et al., “Rethinking Stress: The Role of Mindsets in Determining the Stress Response,” *Journal of Personality and Social Psychology* 104, no. 4 (April 2013): 716–33, <https://doi.org/10.1037/a0031201>; Alia Crum et al., “The Role of Stress Mindset in Shaping Cognitive, Emotional, and Physiological Responses to Challenging and Threatening Stress,” *Anxiety, Stress, & Coping* 30, no. 4 (January 2017): 379–95, <https://doi.org/10.1080/10615806.2016.1275585>; Alia J. Crum et al., “Optimizing Stress: An Integrated Intervention for Regulating Stress Responses,” *Emotion* 20, no. 1 (February 2020): 120–25, <https://doi.org/10.1037/emo0000670>; Alia J. Crum et al., “Evaluation of the ‘Rethink Stress’ Mindset Intervention: A Metacognitive Approach to Changing Mindsets,” *Journal of Experimental Psychology* 153, no. 9 (2023): 2603–22, <http://doi.org/10.1037/xge0001396>; Roman Dunce et al., “Acute Exposure to Stress Improves Performance in Trace Eyeblink Conditioning and Spatial Learning Tasks in Healthy Men,” *Learning & Memory* 14, no. 5 (May 2007): 329–35, <https://doi.org/10.1101/lm.483807>; Jeremy P. Jamieson et al., “Mind over Matter: Reappraising Arousal Improves Cardiovascular and Cognitive Responses to Stress,” *Journal of Experimental Psychology: General* 141, no. 3 (September 2011): 417–22, <https://doi.org/10.1037/a0025719>; Eric N. Smith et al., “Stress, Mindsets, and Success in Navy SEALs Special Warfare Training,” *Frontiers in Psychology* 10 (January 2020): 2962, <https://doi.org/10.3389/fpsyg.2019.02962>; Allison Wood Brooks, “Get Excited: Reappraising Pre-Performance Anxiety as Excitement,” *Journal of Experimental Psychology: General* 143, no. 3 (2014): 1144–58, <https://doi.org/10.1037/a0035325>.
 [^c3-2]: J. A. Easterbrook, “The Effect of Emotion on Cue Utilization and the Organization of Behavior,” *Psychological Review* 66, no. 3 (May 1959): 183–201, <https://doi.org/10.1037/h0047707>; Robert J. Hockey, “Stress and the Cognitive Components of Skilled Performance,” in *Human Stress and Cognition: An Information Processing Approach*, ed. Vernon Hamilton (John Wiley & Sons, 1979); Lorraine Hope et al., “Witnesses in Action: The Effect of Physical Exertion on Recall and Recognition,” *Psychological Science* 23, no. 4 (2012): 386–90, <https://doi.org/10.1177/0956797611431463>; Jessica Wapner, “Secrets to Surviving Stressful Times,” *Scientific American Mind* 32, no. 1 (January 2021): 14, <https://www.scientificamerican.com/article/vision-and-breathing-may-be-the-secrets-to-surviving-2020/>; R. J. Miller and Masatoshi Takahama, “Effects of Relaxation and Aversive Visual Stimulation on Dark Focus Accommodation,” *Ophthalmic and Physiological Optics* 7 (July 1987): 219–23, <https://doi.org/10.1111/j.1475-1313.1987.tb00736.x>; Edward C. Godnig, “Tunnel Vision: Its Causes and Treatment Strategies,” *Journal of Behavioral Optometry* 14, no. 4 (2003): 95–99, <https://www.oepf.org/wp-content/uploads/2021/08/14-420Godnig1.pdf>.
@@ -7348,6 +7348,8 @@ A note about the index: The pages referenced in this index refer to the page num
 **Nem hivatalos, személyes használatra készült fordítás.**
 
 ## Copyright
+
+*Nem hivatalos, személyes használatra készült fordítás. Használjátok egészséggel, de vegyétek meg az eredeti könyvet mindenképp!*
 
 An Imprint of Simon & Schuster, LLC  
 1230 Avenue of the Americas  
