@@ -86,8 +86,8 @@ def main() -> int:
     html = HTML.read_text(encoding="utf-8")
     counts = {
         "protokoll (HTML)": (html.count('class="level2 protocol"'), 47),
-        "jegyzethivatkozás": (html.count('class="noteref"'), 1135),
-        "jegyzet": (html.count('class="note"'), 1135),
+        "jegyzethivatkozás": (html.count('class="noteref"'), 1124),
+        "jegyzet": (html.count('class="note"'), 1124),
         "könyvjelző: protokoll": (sum(1 for lvl, t, p in toc if lvl == 2), 47),
     }
     for k, (got, want) in counts.items():

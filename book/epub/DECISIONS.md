@@ -35,3 +35,19 @@
 10. **Szűrőszintek:** a Pandoc Lua-szűrői a `--shift-heading-level-by` előtti szinteket látják (fejezet = 2, protokoll = 3, blokkcím = 4), nem az eltolás utániakat, ahogy a terv feltételezte.
 11. **Képek:** a Pandoc automatikus képaláírását (`implicit_figures`) kikapcsoltuk, különben a képek alatt megjelenne az alternatív szöveg.
 12. **Borító (E1, 2026-09-27):** a négy tervváltozatból (`cover/variants/`) az ember a 3.-at, a kétnyelvűt választotta: nagyban az eredeti PROTOCOLS logó, alatta a magyar PROTOKOLLOK cím. A `cover/cover.html` ennek önálló másolata; a `cover.jpg` ebből renderelődik (`tools/epub/render_cover.py`). Ugyanezt a képet használja az EPUB és a PDF is.
+
+## Javítások a teljes átolvasás után (2026-09-27, 2. kör)
+
+**Javítva a forrásban** (`book/protocols-hu.md`; az 1., 2. és 6. pont a konverzióból jött, ezért a `source/en/protocols.md`-ben is):
+
+1. **Alsó index lábjegyzetként:** a PDF→MD konverzió a „VO₂” és „CO₂” alsó indexét lábjegyzet-hivatkozásnak olvasta (`VO[^c2-2] max`, 7×; `CO[^c6-2]`, 4×). Most `VO₂max` (ragozva kötőjellel: `VO₂max-szal`, `VO₂max-od`) és `CO₂`. A `[^c2-2]` és `[^c6-2]` valódi hivatkozása egy-egy helyen megmaradt.
+2. **Hibás DOI-linkek a Jegyzetekben (8 db):** hiányzó perjel (`doi.org10.…`), hiányzó kezdő `1` (`doi.org/0.…`), duplázott előtag, `doi:` előtag, a link végére tapadt pont, két csupasz URL `<…>` nélkül, és egy dőlt URL, ahol a dőlt a folyóiratcímről csúszott át. Mind a 8 DOI feloldását ellenőriztük (doi.org → 302).
+3. **Founder póz:** a 4. mobilitási gyakorlat címéből hiányzott a pont („4” → „4.”), mint a másik háromnál. (Az eredetiben egyiknél sincs pont; a fordítás egységesen „1.”–„4.”.)
+4. **Oldalszám-hivatkozás:** „lapozz a 174. oldalra” (Katch–McArdle-képlet, 1. táplálkozási protokoll) → belső link a 2. edzésprotokoll „Regenerációs tippek” szakaszára (`#regenerációs-tippek`; a GitHub és a Pandoc ugyanazt az azonosítót képzi belőle).
+5. **Rhodiola rosea (6. stresszprotokoll):** az adagja a foszfatidil-szerin felsoroláspontjába olvadt, a leírása előtti cím pedig sima dőlt szöveg volt. Most külön pont, és `#####` cím, mint a másik három kiegészítőnél (az eredeti szerint).
+
+**Az eredetiben is így van – szándékosan nem javítva:**
+
+- **Két „2. farmakológiai eszköz”** (teanin és alfa-GPC, 1. tanulási protokoll): a nyomtatott angol kiadásban is kétszer „Pharmacological Tool 2”, utána 3–6. A fordítás követi.
+- **„Az ezt követő öt protokollban”** (2. fejezet bevezetője): az eredetiben is „The five protocols that follow”, pedig négy edzésprotokoll van.
+- **„erről a fejezet utolsó protokolljánál írok bővebben”** (1. táplálkozási protokoll, GYIK, cukor utáni sóvárgás): az eredetiben is „more on that in the last protocol of this chapter”, de a szokatlan eszközt (L-glutamin) két bekezdéssel lejjebb, helyben tárgyalja; a 7. táplálkozási protokollban nem szerepel.
