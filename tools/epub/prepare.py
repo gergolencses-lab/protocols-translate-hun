@@ -20,7 +20,9 @@ _unit_re = re.compile(
 )
 _ordinal_re = re.compile(rf"(?<![\d.,])(\d{{1,3}})\. (?=[{HU_LOWER}])")
 # Részek, amelyekhez sem kötött szóköz, sem elválasztójel nem nyúlhat.
-_protected_re = re.compile(r"\]\([^)]*\)|<[^>\s]+>|https?://\S+|`[^`]*`|\{[^}]*\}")
+_protected_re = re.compile(
+    r"\]\([^)]*\)|<[^>\s]+>|https?://\S+|www\.\S+|[\w.+-]+@[\w.-]+|`[^`]*`|\{[^}]*\}"
+)
 _word_re = re.compile(r"[^\W\d_]+")
 
 
@@ -62,6 +64,21 @@ def unwrap_notes_section(md: str) -> str:
     return md[:m.start()] + body + md[m.end():]
 
 
+def reflow_copyright(md: str, min_len: int = 50) -> str:
+    """A Copyright szakaszban a PDF-ből maradt, mondat közepi kemény sortöréseket
+    (hosszú sor + „  \\n”) szóközre cseréli; a rövid címsorok (cím, ISBN) maradnak."""
+    m = re.search(r"^## Copyright\n.*?(?=^## |\Z)", md, re.M | re.S)
+    if not m:
+        return md
+    lines = m.group(0).split("\n")
+    out = []
+    for i, line in enumerate(lines):
+        joined = i < len(lines) - 1 and line.endswith("  ") and len(line.rstrip()) >= min_len
+        out.append(line.rstrip() + " " if joined else line + "\n")
+    sec = "".join(out)[:-1]  # az utolsó sor után nem volt soremelés
+    return md[:m.start()] + sec + md[m.end():]
+
+
 def nbsp_units(md: str) -> str:
     """Kötött szóköz szám és mértékegység közé, valamint sorszám után."""
     def fix(text: str) -> str:
@@ -93,16 +110,21 @@ def soft_hyphenate(md: str, min_len: int = 10) -> str:
     def fix(text: str) -> str:
         return _word_re.sub(hyph_word, text)
 
-    return "\n".join(
-        line if _is_skipped_line(line) else _map_unprotected(line, fix)
-        for line in md.split("\n")
-    )
+    out, in_copyright = [], False
+    for line in md.split("\n"):
+        if line.startswith("## "):
+            # A Copyright angol nyelvű: magyar elválasztási mintákkal nem bontjuk.
+            in_copyright = line.strip() == "## Copyright"
+        skip = in_copyright or _is_skipped_line(line)
+        out.append(line if skip else _map_unprotected(line, fix))
+    return "\n".join(out)
 
 
 def prepare(md: str, soft_hyphens: bool = True) -> str:
     md = strip_front(md)
     md = remove_sections(md, ["Tartalom", "Index"])
     md = unwrap_notes_section(md)
+    md = reflow_copyright(md)
     md = nbsp_units(md)
     if soft_hyphens:
         md = soft_hyphenate(md)

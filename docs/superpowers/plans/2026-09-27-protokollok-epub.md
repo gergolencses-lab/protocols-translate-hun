@@ -1,6 +1,8 @@
 # Protokollok – EPUB-előállítás: megvalósítási terv
 
-> **Végrehajtónak (Codex vagy Claude):** feladatról feladatra haladj, a sorrendet tartva. A lépések jelölőnégyzetesek (`- [ ]`); a kész lépést pipáld ki, és commitolj. A **🛑 KAPU** jelzésű lépésnél állj meg, és várd meg az ember válaszát. A 0. feladat döntéseit az ember hagyja jóvá; amíg ez nem történt meg, a javasolt alapértelmezéssel dolgozz.
+> **Állapot (2026-09-27):** az 1–6. feladat 1–2. lépése végrehajtva (Claude). A tervtől való eltérések a `book/epub/DECISIONS.md` „Végrehajtás közbeni döntések” szakaszában vannak. Hátravan: a 6. feladat 3. lépése (tesztelés az ember eszközén) és az opcionális 7. feladat.
+>
+> **Végrehajtónak (Codex vagy Claude):** feladatról feladatra haladj, a sorrendet tartva. A lépések jelölőnégyzetesek (`- [x]`); a kész lépést pipáld ki, és commitolj. A **🛑 KAPU** jelzésű lépésnél állj meg, és várd meg az ember válaszát. A 0. feladat döntéseit az ember hagyja jóvá; amíg ez nem történt meg, a javasolt alapértelmezéssel dolgozz.
 
 **Cél:** A kész magyar fordításból (`book/protocols-hu.md`) igényes, validált EPUB 3 készüljön (`dist/protokollok.epub`). Kinézetben kövesse az eredeti Simon & Schuster e-könyvet, a magyar tipográfia szabályai szerint, és működjön Kindle-ön, Kobón, PocketBookon és Apple Booksban.
 
@@ -104,12 +106,12 @@ dist/protokollok.epub              # kimenet (gitignore)
 **Fájlok:** Módosítandó: `book/protocols-hu.md`, `.gitignore`.
 
 - [x] **1. lépés:** A magyar fordítás a `book/protocols-hu.md` fájlban van (a tervvel együtt került a repóba, változatlanul). Egészítsd ki a `.gitignore`-t: `build/`, `dist/`.
-- [ ] **2. lépés:** Javítsd a „Hibák a magyar Markdownban” szakasz 1–4. pontját. A 3. ponthoz futtasd: `grep -nE '[^ ] - [^ ]|[0-9]{1,3},[0-9]{3}' book/protocols-hu.md | grep -v '^\s*-'` (csak a Jegyzetek előtti találatok számítanak; a hivatkozások angolok, azokhoz nem nyúlunk).
-- [ ] **3. lépés:** Ellenőrzés:
+- [x] **2. lépés:** Javítsd a „Hibák a magyar Markdownban” szakasz 1–4. pontját. A 3. ponthoz futtasd: `grep -nE '[^ ] - [^ ]|[0-9]{1,3},[0-9]{3}' book/protocols-hu.md | grep -v '^\s*-'` (csak a Jegyzetek előtti találatok számítanak; a hivatkozások angolok, azokhoz nem nyúlunk).
+- [x] **3. lépés:** Ellenőrzés:
   - `grep -c '!\[Fejezetembléma\]' book/protocols-hu.md` → `7`
   - `grep -c 'vegyétek meg az eredeti könyvet mindenképp' book/protocols-hu.md` → `2`
   - `grep -n '^#\{2,3\} 3\. fejezet' book/protocols-hu.md` → két azonos cím
-- [ ] **4. lépés:** Commit: `book: magyar forrás + konverzió előtti javítások`.
+- [x] **4. lépés:** Commit: `book: magyar forrás + konverzió előtti javítások`.
 
 ### 2. feladat: Előkészítő szkript (`prepare.py`)
 
@@ -128,7 +130,7 @@ dist/protokollok.epub              # kimenet (gitignore)
   - Kihagyandó: címsorsorok, definíciós sorok, linkcélok, `<…>` URL-ek, `images/…` útvonalak, `{…}` attribútumok.
 - `main(src, dst, soft_hyphens=True)` + CLI: `python tools/epub/prepare.py book/protocols-hu.md build/epub/protokollok.md [--no-soft-hyphens]`
 
-- [ ] **1. lépés: Írd meg a bukó teszteket** (`tests/epub/test_prepare.py`), legalább ezekkel az állításokkal:
+- [x] **1. lépés: Írd meg a bukó teszteket** (`tests/epub/test_prepare.py`), legalább ezekkel az állításokkal:
 
 ```python
 NB, SHY = " ", "­"
@@ -160,13 +162,13 @@ def test_soft_hyphenate_roundtrip_and_skips():
     assert SHY not in out.split("\n")[1] and SHY not in out.split("\n")[2]
 ```
 
-- [ ] **2. lépés:** `python -m pytest tests/epub/test_prepare.py -v` → FAIL (a modul még nem létezik).
-- [ ] **3. lépés:** Valósítsd meg a függvényeket az interfész szerint.
-- [ ] **4. lépés:** `python -m pytest tests/epub -v` → minden átmegy. Utána a valódi forráson: `python tools/epub/prepare.py book/protocols-hu.md build/epub/protokollok.md`, majd ellenőrzés:
+- [x] **2. lépés:** `python -m pytest tests/epub/test_prepare.py -v` → FAIL (a modul még nem létezik).
+- [x] **3. lépés:** Valósítsd meg a függvényeket az interfész szerint.
+- [x] **4. lépés:** `python -m pytest tests/epub -v` → minden átmegy. Utána a valódi forráson: `python tools/epub/prepare.py book/protocols-hu.md build/epub/protokollok.md`, majd ellenőrzés:
   - `grep -c '^\[\^' build/epub/protokollok.md` → `1124`
   - `grep -c '^## \(Tartalom\|Index\|Jegyzetek\)$' build/epub/protokollok.md` → `0`
   - `sed 's/\xc2\xad//g' build/epub/protokollok.md | cmp - <(python tools/epub/prepare.py book/protocols-hu.md /dev/stdout --no-soft-hyphens)` → nincs kimenet
-- [ ] **5. lépés:** Commit: `tools(epub): előkészítő szkript`.
+- [x] **5. lépés:** Commit: `tools(epub): előkészítő szkript`.
 
 ### 3. feladat: Lua-szűrők
 
@@ -187,7 +189,7 @@ A szűrők a `--shift-heading-level-by=-1` utáni szinteken dolgoznak: fejezet =
   - Ha „Példa:” szöveggel kezdődik: `Div.example`.
   - Minden más idézetblokk marad `blockquote`.
 
-- [ ] **1. lépés:** `tests/epub/fixture.md`: egy mini könyv, benne:
+- [x] **1. lépés:** `tests/epub/fixture.md`: egy mini könyv, benne:
   - 1 fejezet emblémával;
   - 2 protokoll, `Mit tegyél?` / `Hogyan működik?` blokkcímmel;
   - 1 keretes doboz, 1 ajánlás, 1 „Példa:” idézetblokk;
@@ -198,18 +200,18 @@ A szűrők a `--shift-heading-level-by=-1` utáni szinteken dolgoznak: fejezet =
   - a protokollszám `<span class="protocol-num">2</span>`.
 
   Ha a Pandoc nincs telepítve, a teszt legyen `pytest.skip`.
-- [ ] **2. lépés:** A teszt bukik → valósítsd meg a szűrőket → a teszt átmegy.
-- [ ] **3. lépés:** Commit: `tools(epub): Lua-szűrők`.
+- [x] **2. lépés:** A teszt bukik → valósítsd meg a szűrőket → a teszt átmegy.
+- [x] **3. lépés:** Commit: `tools(epub): Lua-szűrők`.
 
 ### 4. feladat: CSS, metaadat, borító
 
 **Fájlok:** Létrehozandó: `book/epub/epub.css`, `book/epub/metadata.yaml`, `book/epub/cover/cover.html`, `book/epub/cover/cover.jpg`.
 
-- [ ] **1. lépés: `metadata.yaml`** az E12 szerint. Kulcsok:
+- [x] **1. lépés: `metadata.yaml`** az E12 szerint. Kulcsok:
   - `title`, `subtitle`, `creator` (`role: author`), `contributor`, `lang: hu`, `identifier` (`scheme: UUID`, egyszer generált érték), `date: 2026`, `rights`, `description`;
   - `cover-image: book/epub/cover/cover.jpg`, `css: book/epub/epub.css`;
   - `toc-title: Tartalom`, `page-progression-direction: ltr`.
-- [ ] **2. lépés: `epub.css`.** Kötelező szabályok (értékek a „Mit mutat az eredeti” táblázat alapján):
+- [x] **2. lépés: `epub.css`.** Kötelező szabályok (értékek a „Mit mutat az eredeti” táblázat alapján):
   - **`body`:** `font-family: serif`, `text-align: justify`, `hyphens: auto` (+ `-webkit-hyphens`, `-epub-hyphens`, `adobe-hyphenate: auto`), `widows: 2`, `orphans: 2`.
   - **`p`:** `margin: 0`, `text-indent: 1.2em`. A címsor, lista, doboz vagy kép utáni első bekezdés (`h1+p, h2+p, h3+p, h4+p, ul+p, ol+p, div+p, figure+p, p.first`): `text-indent: 0`.
   - **`h1, h2, h3, h4`:** `font-family: sans-serif`, `hyphens: manual`, `text-align: left`, `page-break-after: avoid; break-after: avoid`.
@@ -226,17 +228,17 @@ A szűrők a `--shift-heading-level-by=-1` utáni szinteken dolgoznak: fejezet =
   - **`div.example`:** behúzva, `font-size: .95em`.
   - **Szerzőfotó:** `img[src*="andrew-huberman"]`: `width: 40%`, `max-width: 196px`, középen.
   - **Lábjegyzetek:** `a[role="doc-noteref"], a.footnote-ref` felső indexben, `font-size: .75em`, aláhúzás nélkül. A lábjegyzetszakasz (`section.footnotes`) mérete `.85em`, balra zárt, `hyphens: manual`, mert a hivatkozások angolok és URL-eket tartalmaznak.
-- [ ] **3. lépés: Borító (E1).**
+- [x] **3. lépés: Borító (E1).**
   - A `cover.html` egy 1600×2560 px-es oldal, fehér háttérrel. Rajta: a PROTOKOLLOK felirat 3 betűs sorokra tördelve, mint a címoldal PRO / TO●C / OLS szórácsa (javaslat: `PRO / TO● / KOL / LOK`, az ● halványszürke kör), alatta az alcím csupa nagybetűvel, legalul a szerző.
   - Renderelés Chromiummal: Playwright, `page.screenshot`, JPEG, minőség 90 → `cover.jpg`.
   - Ha az E1 döntés „angol borító”: `cover-image: book/images/cover.jpeg`, és ez a lépés kimarad.
-- [ ] **4. lépés:** Commit: `book(epub): CSS, metaadat, borító`.
+- [x] **4. lépés:** Commit: `book(epub): CSS, metaadat, borító`.
 
 ### 5. feladat: Build + validálás
 
 **Fájlok:** Létrehozandó: `tools/epub/build.sh`.
 
-- [ ] **1. lépés:** `build.sh` tartalma (`set -euo pipefail`):
+- [x] **1. lépés:** `build.sh` tartalma (`set -euo pipefail`):
 
 ```bash
 python tools/epub/prepare.py book/protocols-hu.md build/epub/protokollok.md "$@"
@@ -250,23 +252,23 @@ pandoc build/epub/protokollok.md -f markdown-smart -t epub3 \
 java -jar "${EPUBCHECK_JAR:?EPUBCHECK_JAR nincs beállítva}" dist/protokollok.epub
 ```
 
-- [ ] **2. lépés:** `bash tools/epub/build.sh`
+- [x] **2. lépés:** `bash tools/epub/build.sh`
 
   Elvárt: `No errors or warnings detected.` Minden EPUBCheck-hibát a forrásánál javíts (szűrő, CSS, prepare), ne az EPUB-ban.
-- [ ] **3. lépés: Szerkezeti ellenőrzés** az EPUB-on (`unzip -d build/epub/x dist/protokollok.epub`):
+- [x] **3. lépés: Szerkezeti ellenőrzés** az EPUB-on (`unzip -d build/epub/x dist/protokollok.epub`):
   - **Fejezetfájlok:** a gerincben (spine) sorrendben: címoldal, tartalomjegyzék, Jogi nyilatkozat, Ajánlás, Bevezetés, 1–7. fejezet, Mielőtt az utolsó oldalra lapoznál, Köszönetnyilvánítás, A szerzőről, Copyright. Nincs Tartalom-, Index- vagy Jegyzetek-fejezet.
   - **Protokollok:** `grep -o 'class="protocol"' build/epub/x/EPUB/text/*.xhtml | wc -l` → `47`.
   - **Lábjegyzetek:** `grep -o 'epub:type="noteref"' … | wc -l` → `1124` (ha a Pandoc más jelölést használ, pl. `role="doc-noteref"`, arra számolj; az érték 1124).
   - **Dobozok:** `grep -o 'class="sidebar"' … | wc -l` → `10`.
   - **Fájlméret:** a legnagyobb fejezetfájl mérete (`ls -S build/epub/x/EPUB/text | head -3`). Ha 300 KB fölött van, jegyezd fel a `DECISIONS.md`-be; régebbi Kobo- és ADE-olvasókon lassú lehet, ilyenkor a fejezetet `--split-level=2`-vel érdemes bontani.
   - **Nav:** a `nav.xhtml` fejezet- és protokollcímei olvashatók, teljesek, nincs bennük címkeduplázás.
-- [ ] **4. lépés:** Commit: `tools(epub): build + EPUBCheck`.
+- [x] **4. lépés:** Commit: `tools(epub): build + EPUBCheck`.
 
 ### 6. feladat: Szemrevételezés – 🛑 KAPU
 
 **Fájlok:** Létrehozandó: `tools/epub/screenshots.py`, `build/epub/shots/*.png`.
 
-- [ ] **1. lépés:** A `screenshots.py` Playwright-tal (Chromium) megnyitja a kicsomagolt EPUB XHTML-fájljait két nézetben: 600×800 (6 hüvelykes olvasó) és 1264×1680 (nagy olvasó), világos és sötét háttérrel (sötétnél `html { filter: invert(1) }` szimulációval). Oldalanként képet készít:
+- [x] **1. lépés:** A `screenshots.py` Playwright-tal (Chromium) megnyitja a kicsomagolt EPUB XHTML-fájljait két nézetben: 600×800 (6 hüvelykes olvasó) és 1264×1680 (nagy olvasó), világos és sötét háttérrel (sötétnél `html { filter: invert(1) }` szimulációval). Oldalanként képet készít:
   - borító, címoldal, tartalomjegyzék eleje;
   - Ajánlás;
   - az 1. fejezet nyitója;
@@ -275,7 +277,7 @@ java -jar "${EPUBCHECK_JAR:?EPUBCHECK_JAR nincs beállítva}" dist/protokollok.e
   - egy „Mit tegyél?” lista;
   - A szerzőről;
   - egy fejezet végi jegyzetblokk.
-- [ ] **2. lépés:** Vesd össze a képeket az eredeti PDF megfelelő oldalaival (24., 30., 59., 516., 520.). A különbségeket listázd a `build/epub/shots/REVIEW.md`-ben.
+- [x] **2. lépés:** Vesd össze a képeket az eredeti PDF megfelelő oldalaival (24., 30., 59., 516., 520.). A különbségeket listázd a `build/epub/shots/REVIEW.md`-ben.
 - [ ] **3. lépés: 🛑 KAPU.** Add át az embernek:
   - a `dist/protokollok.epub`-ot;
   - a képeket;

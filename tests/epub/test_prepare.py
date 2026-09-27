@@ -1,4 +1,11 @@
-from prepare import nbsp_units, remove_sections, soft_hyphenate, strip_front, unwrap_notes_section
+from prepare import (
+    nbsp_units,
+    reflow_copyright,
+    remove_sections,
+    soft_hyphenate,
+    strip_front,
+    unwrap_notes_section,
+)
 
 NB, SHY = " ", "­"
 
@@ -57,3 +64,28 @@ def test_soft_hyphenate_never_changes_letters():
     out = soft_hyphenate(src)
     assert out.replace(SHY, "") == src
     assert SHY in out
+
+
+def test_reflow_copyright_joins_only_long_pdf_lines():
+    md = (
+        "## A\nHosszú sor, amely nem a copyright része, és sortöréssel végződik itt  \nfolytatás\n"
+        "## Copyright\n\n"
+        "An Imprint of Simon & Schuster, LLC  \n1230 Avenue of the Americas  \nNew York, NY 10020\n\n"
+        "No amount of this book may be reproduced or stored in any format, nor may it be uploaded to  \n"
+        "any website without express permission.\n"
+    )
+    out = reflow_copyright(md)
+    assert "uploaded to any website" in out
+    assert "An Imprint of Simon & Schuster, LLC  \n1230 Avenue of the Americas  \nNew York" in out
+    assert "végződik itt  \nfolytatás" in out
+
+
+def test_soft_hyphenate_skips_emails_and_copyright_section():
+    src = (
+        "## A\nÍrj a permissions@simonandschuster.com címre, vagy nézd a www.SimonandSchuster.com oldalt.\n"
+        "## Copyright\n\nThe authorized representative is Simon & Schuster Nederland, Herculesplein.\n"
+    )
+    out = soft_hyphenate(src)
+    assert "permissions@simonandschuster.com" in out
+    assert "www.SimonandSchuster.com" in out
+    assert SHY not in out.split("## Copyright")[1]

@@ -1,0 +1,254 @@
+/* Protokollok – EPUB stíluslap.
+   Minta: az eredeti Simon & Schuster e-könyv (a repó PDF-je).
+   Szabályok: nincs rögzített betűszín és px-es betűméret; háttér csak áttetszően. */
+
+/* ---------- Alap ---------- */
+body {
+  font-family: serif;
+  line-height: 1.4;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  -epub-hyphens: auto;
+  adobe-hyphenate: auto;
+  hyphens: auto;
+  widows: 2;
+  orphans: 2;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  text-indent: 1.2em;
+}
+
+/* A címsor, lista, doboz vagy kép utáni első bekezdés behúzás nélkül. */
+h1 + p, h2 + p, h3 + p, h4 + p, h5 + p,
+ul + p, ol + p, div + p, blockquote + p, section > p:first-child,
+li > p:first-child, div.sidebar p:first-of-type {
+  text-indent: 0;
+}
+
+em, i { font-style: italic; }
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Címsorok ---------- */
+h1, h2, h3, h4, h5 {
+  font-family: sans-serif;
+  text-align: left;
+  -webkit-hyphens: manual;
+  -epub-hyphens: manual;
+  adobe-hyphenate: none;
+  hyphens: manual;
+  line-height: 1.2;
+  page-break-after: avoid;
+  break-after: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+h1 { font-size: 1.6em; font-weight: normal; margin: 2em 0 1em; }
+h2 { font-size: 1.3em; font-weight: bold; margin: 1.8em 0 .6em; }
+h3 { font-size: 1.1em; font-weight: bold; margin: 1.5em 0 .4em; }
+h4 { font-size: 1em; font-weight: bold; margin: 1.2em 0 .3em; }
+h5 { font-size: 1em; font-weight: bold; font-style: italic; margin: 1em 0 .2em; }
+
+h1 span.sep, h2 span.sep { display: none; }
+h1.no-title { display: none; }
+
+/* ---------- Fejezetnyitó ----------
+   Eredeti: „CHAPTER 1” → embléma → cím. Itt: „1. FEJEZET” → cím → embléma,
+   mert az embléma a címsor után áll, és negatív margót sok olvasó nem kezel. */
+h1.chapter-opener {
+  text-align: center;
+  margin: 20% 0 1.2em;
+  font-weight: normal;
+}
+h1.chapter-opener .chapter-label {
+  display: block;
+  font-size: .55em;
+  font-weight: bold;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: .8em;
+}
+h1.chapter-opener .chapter-title {
+  display: block;
+  font-family: serif;
+  font-size: 1em;
+}
+div.emblem {
+  text-align: center;
+  text-indent: 0;
+  margin: 0 0 3em;
+  page-break-after: avoid;
+}
+div.emblem img {
+  width: 30%;
+  max-width: 200px;
+}
+
+/* ---------- Protokollnyitó (eredeti: címke, szám körben, nagy cím; új oldal) ---------- */
+h2.protocol {
+  page-break-before: always;
+  break-before: page;
+  margin-top: 2.5em;
+  font-weight: normal;
+  font-size: 1em;
+}
+h2.protocol .protocol-num {
+  display: inline-block;
+  width: 1.9em;
+  height: 1.9em;
+  line-height: 1.9em;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, .09);
+  text-align: center;
+  font-size: 1em;
+  margin-right: .5em;
+}
+h2.protocol .protocol-label {
+  font-size: .85em;
+  font-weight: bold;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+h2.protocol .protocol-title {
+  display: block;
+  font-size: 1.5em;
+  line-height: 1.2;
+  margin-top: .6em;
+}
+
+/* ---------- Protokollon kívüli szakaszcím (pl. „Mi az edzés?”) ----------
+   A szűrő egy szinttel lejjebb teszi (h3), de a korábbi h2 súlyával jelenik meg. */
+h3.section-head { font-size: 1.3em; margin: 1.8em 0 .6em; }
+
+/* ---------- Blokkcímek (MIT TEGYÉL? / HOGYAN MŰKÖDIK?) ---------- */
+h3.block-label {
+  font-size: .85em;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  margin-top: 1.6em;
+}
+
+/* ---------- Listák ---------- */
+ul, ol { margin: .5em 0 .8em; padding-left: 1.4em; }
+li { margin: .25em 0; }
+li > strong:first-child,
+li > p:first-child > strong:first-child {
+  font-family: sans-serif;
+  font-size: .93em;
+}
+
+/* ---------- Keretes dobozok (eredeti: szürke háttér, sans-serif cím) ---------- */
+div.sidebar {
+  background-color: rgba(0, 0, 0, .06);
+  border-left: 3px solid rgba(0, 0, 0, .35);
+  padding: .7em 1em .8em;
+  margin: 1.3em 0;
+}
+div.sidebar-title p {
+  font-family: sans-serif;
+  font-weight: bold;
+  text-indent: 0;
+  text-align: left;
+  margin-bottom: .3em;
+  -webkit-hyphens: manual;
+  hyphens: manual;
+}
+div.sidebar-title + p { text-indent: 0; }
+
+/* ---------- Ajánlás, példa, idézet ---------- */
+div.dedication {
+  margin: 25% 5% 0;
+  font-size: .95em;
+  text-align: left;
+}
+div.dedication p { text-indent: 0; margin-bottom: 1em; }
+
+div.example {
+  margin: .8em 1.5em;
+  font-size: .95em;
+}
+div.example p { text-indent: 0; }
+
+blockquote { margin: 1em 1.5em; }
+
+/* ---------- Képek ---------- */
+img { max-width: 100%; }
+div.author-photo {
+  text-align: center;
+  text-indent: 0;
+  margin: 1em 0 1.5em;
+}
+div.author-photo img {
+  width: 40%;
+  max-width: 196px;
+}
+
+/* ---------- Lábjegyzetek ---------- */
+a.footnote-ref {
+  vertical-align: super;
+  font-size: .7em;
+  line-height: 0;
+  text-decoration: none;
+}
+a.footnote-ref sup { vertical-align: baseline; font-size: 1em; }
+section.footnotes {
+  font-size: .82em;
+  text-align: left;
+  -webkit-hyphens: manual;
+  hyphens: manual;
+  line-height: 1.3;
+}
+/* A Pandoc felugró lábjegyzetei (aside) szám nélkül állnak a fájl végén; a sorszámot
+   CSS-számláló adja, fájlonként újraindulva, a hivatkozások számozásával egyezően. */
+section.footnotes { counter-reset: fn; }
+section.footnotes aside { counter-increment: fn; margin: 0 0 .45em; }
+section.footnotes aside > p:first-child::before { content: counter(fn) ". "; font-weight: bold; }
+section.footnotes hr { border: 0; border-top: 1px solid rgba(0, 0, 0, .3); width: 30%; margin: 2em 0 1em; }
+section.footnotes p { text-indent: 0; }
+.footnotes a { word-wrap: break-word; overflow-wrap: break-word; }
+
+/* ---------- Címoldal (a Pandoc generálja) és tartalomjegyzék ----------
+   Névteres (epub|type) szelektor helyett osztály/azonosító: sok olvasó nem kezeli. */
+section.titlepage {
+  text-align: center;
+  margin-top: 30%;
+}
+section.titlepage h1.main {
+  font-size: 2.3em;
+  font-weight: bold;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 .6em;
+}
+section.titlepage h1.subtitle {
+  font-size: .9em;
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 4em;
+}
+section.titlepage p.author {
+  font-family: sans-serif;
+  font-size: .9em;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-align: center;
+  text-indent: 0;
+}
+/* A dátum és a jogi megjegyzés a metaadatban marad; a megjegyzés a Copyright fölött látszik. */
+section.titlepage p.date, section.titlepage div.rights { display: none; }
+
+nav#toc ol { list-style-type: none; padding-left: 1.2em; margin: 0; }
+nav#toc > ol { padding-left: 0; }
+nav#toc li { margin: .35em 0; text-align: left; }
+nav#toc h1 { text-align: left; }
+nav#landmarks { display: none; }
+
+/* ---------- Copyright ---------- */
+section#copyright p { text-indent: 0; font-size: .85em; text-align: left; margin-bottom: .6em; }

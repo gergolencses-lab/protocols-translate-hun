@@ -27,6 +27,8 @@ function Header(h)
   end
   if EPUB_TYPES[t] then
     h.attributes["epub:type"] = EPUB_TYPES[t]
+    -- Az ajánlás oldalán az eredetiben nincs cím; a tartalomjegyzékben megmarad.
+    if t == "Ajánlás" then h.classes:insert("no-title") end
     return h
   end
 end

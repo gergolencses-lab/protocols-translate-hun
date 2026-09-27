@@ -33,17 +33,28 @@ def test_chapter_opener(html):
 
 def test_epub_types(html):
     assert 'epub:type="dedication"' in html
+    assert '<h1 class="no-title"' in html
 
 
 def test_protocols(html):
-    assert html.count('class="protocol"') == 2
+    assert html.count('class="protocol"') == 3
     assert '<span class="protocol-num">2</span>' in html
     assert '<span class="protocol-label">stresszszabályozási protokoll</span>' in html
-    assert "A libikókamodell" in html and html.count("protocol-num") == 2
+    assert html.count("protocol-num") == 3
+
+
+def test_non_protocol_sections_demoted(html):
+    # A protokollon kívüli szakasz egy szinttel lejjebb kerül (a fájlbontás és a
+    # tartalomjegyzék így csak fejezetnél és protokollnál tör), az alcímei is vele.
+    import re
+    assert re.search(r'<h3 class="section-head"[^>]*>A libikókamodell</h3>', html)
+    assert re.search(r'<h4[^>]*>Belső alcím</h4>', html)
+    # A következő protokoll blokkcíme már nem süllyed le.
+    assert html.count('<h3 class="block-label"') == 3
 
 
 def test_block_labels(html):
-    assert html.count('class="block-label"') == 2
+    assert html.count('class="block-label"') == 3
 
 
 def test_blockquotes(html):

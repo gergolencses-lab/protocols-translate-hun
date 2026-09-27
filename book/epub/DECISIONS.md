@@ -2,7 +2,7 @@
 
 **Állapot:** az ember 2026-09-27-én minden javaslatot elfogadott.
 
-**Fordító / megjegyzés (E12):** fordító neve nem szerepel. A könyvben (címoldal után és a Copyright fölött) és a metaadatban (`rights`, `description`) ez áll:
+**Fordító / megjegyzés (E12):** fordító neve nem szerepel. A könyvben **csak a Copyright fölött** (az ember kérésére), valamint a metaadatban (`rights`, `description`) ez áll:
 
 > Nem hivatalos, személyes használatra készült fordítás. Használjátok egészséggel, de vegyétek meg az eredeti könyvet mindenképp!
 
@@ -21,6 +21,16 @@
 | **E11** | Bekezdés | **Sorkizárt, első soros behúzás, bekezdésköz nélkül** (mint az eredetiben) | Alternatíva: balra zárt + bekezdésköz. |
 | **E12** | Metaadat | Cím: *Protokollok*; alcím: *Használati útmutató az emberi testhez*; szerző: Andrew D. Huberman; közreműködő: Jessica Wapner; nyelv: `hu`; azonosító: egyszer generált `urn:uuid` (nem az angol ISBN); **fordító: nincs megnevezve**; `rights` és `description`: a fenti megjegyzés | **Elfogadva.** A megjegyzés két helyen jelenik meg: a címoldal utáni rövid oldalon és a Copyright fölött. |
 
-## Végrehajtás közbeni döntések
+## Végrehajtás közbeni döntések (2026-09-27)
 
-_(ide kerül pl. az E7 tartalomjegyzék-kérdésének eredménye, vagy a fejezetfájl-méret miatti bontás)_
+1. **A megjegyzés helye (E12):** csak a Copyright fölött. A Pandoc a `rights` metaadatot a címoldalra is kiírná, ezt a CSS elrejti (`section.titlepage div.rights`).
+2. **Fejezetnyitó (E2):** a sorrend „1. FEJEZET” → cím → embléma (az eredetiben: címke → embléma → cím). Az embléma a címsor után áll, és a negatív margót, ami kellene a közé tételéhez, sok olvasó nem kezeli.
+3. **Protokollcím (E7):** magyar sorrend: szám körben + „ALVÁSPROTOKOLL” címke, alatta a cím. A címsor szövege spanokra bontva, de betű szerint változatlan („1. alvásprotokoll: …”), az elválasztókat („. ”, „: ”) csak a címsorban rejti el a CSS. Így a tartalomjegyzék és a CSS nélküli olvasás is teljes címet mutat.
+4. **Fájlbontás és tartalomjegyzék (E5):** `--split-level=2`, vagyis minden fejezet és minden protokoll külön fájl (új oldalon kezdődik; legnagyobb fájl 190 KB). A protokollon kívüli 3. szintű szakaszok (pl. „Mi az edzés?”, „A Tiszta mindenevő étrend”) és alcímeik egy szinttel lejjebb kerülnek (`h3.section-head`, a régi súllyal). Így a tartalomjegyzék – mint az eredetiben – csak a fejezeteket és a 47 protokollt listázza (61 tétel).
+5. **Lábjegyzetek (E3):** a Pandoc felugró lábjegyzetei fájlonként, tehát protokollonként újraindulva számozódnak. Ez közelebb áll az eredetihez, mint a tervezett folyamatos 1–1124. A fájl végi jegyzetlista sorszámát CSS-számláló adja.
+6. **Szótagolás (E8):** a pyphen `hu_HU` szótár nem szabványos pontjait (pl. alátámasz-sza, visz-sza) kihagyjuk, mert lágy elválasztójelként betűt cserélnének. Kimarad a Copyright szakasz (angol), valamint az e-mail- és `www.`-címek.
+7. **Copyright:** a forrásban maradt, mondat közepi PDF-sortöréseket az előkészítő összevonja; a rövid címsorok (cím, ISBN) maradnak.
+8. **Ajánlás:** az oldalon nem jelenik meg az „Ajánlás” cím (mint az eredetiben), a tartalomjegyzékben igen.
+9. **Tartalmi javítások a forrásban** (`book/protocols-hu.md`): a 6. fejezet „Learning Protocol 1–6” címkéi egységesen „tanulási protokoll” (négy eltérő fordításból); a Jegyzetek 3. fejezet-címe egyezik a törzsszövegével; az embléma alternatív szövege egységes; a Tartalom egy eltérő tétele és törött horgonya javítva.
+10. **Szűrőszintek:** a Pandoc Lua-szűrői a `--shift-heading-level-by` előtti szinteket látják (fejezet = 2, protokoll = 3, blokkcím = 4), nem az eltolás utániakat, ahogy a terv feltételezte.
+11. **Képek:** a Pandoc automatikus képaláírását (`implicit_figures`) kikapcsoltuk, különben a képek alatt megjelenne az alternatív szöveg.
