@@ -15,6 +15,7 @@ pandoc build/epub/protokollok.md \
   --lua-filter tools/epub/filters/chapter.lua \
   --lua-filter tools/epub/filters/protocol.lua \
   --lua-filter tools/epub/filters/sidebar.lua \
+  --lua-filter tools/epub/filters/pseudohead.lua \
   --resource-path=book \
   -o dist/protokollok.epub
 ls -l dist/protokollok.epub

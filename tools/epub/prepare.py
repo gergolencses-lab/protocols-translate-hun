@@ -120,10 +120,13 @@ def soft_hyphenate(md: str, min_len: int = 10) -> str:
     return "\n".join(out)
 
 
-def prepare(md: str, soft_hyphens: bool = True) -> str:
+def prepare(md: str, soft_hyphens: bool = True, keep_notes: bool = False) -> str:
+    """keep_notes: a Jegyzetek szakasz címe, bevezetője és alcímei megmaradnak
+    (a nyomtatott PDF ide gyűjti a jegyzeteket, lásd tools/pdf/filters/notes.lua)."""
     md = strip_front(md)
     md = remove_sections(md, ["Tartalom", "Index"])
-    md = unwrap_notes_section(md)
+    if not keep_notes:
+        md = unwrap_notes_section(md)
     md = reflow_copyright(md)
     md = nbsp_units(md)
     if soft_hyphens:
@@ -136,8 +139,10 @@ def main() -> None:
     ap.add_argument("src")
     ap.add_argument("dst")
     ap.add_argument("--no-soft-hyphens", action="store_true")
+    ap.add_argument("--keep-notes", action="store_true")
     a = ap.parse_args()
-    out = prepare(Path(a.src).read_text(encoding="utf-8"), soft_hyphens=not a.no_soft_hyphens)
+    out = prepare(Path(a.src).read_text(encoding="utf-8"),
+                  soft_hyphens=not a.no_soft_hyphens, keep_notes=a.keep_notes)
     dst = Path(a.dst)
     if str(dst) != "/dev/stdout":
         dst.parent.mkdir(parents=True, exist_ok=True)

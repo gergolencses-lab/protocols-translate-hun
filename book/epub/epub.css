@@ -132,6 +132,10 @@ h3.block-label {
   margin-top: 1.6em;
 }
 
+/* ---------- Félkövér alcím-bekezdés (run-head) ---------- */
+div.run-head { page-break-after: avoid; break-after: avoid; margin-top: .6em; }
+div.run-head p { text-indent: 0; text-align: left; -webkit-hyphens: manual; hyphens: manual; }
+
 /* ---------- Listák ---------- */
 ul, ol { margin: .5em 0 .8em; padding-left: 1.4em; }
 li { margin: .25em 0; }

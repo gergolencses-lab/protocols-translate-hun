@@ -18,6 +18,10 @@ Bevezető bekezdés.[^c1-1]
 
 Magyarázat.[^c1-2]
 
+**MIELŐTT KELET FELÉ UTAZOL**
+
+Szöveg alatta.
+
 > **Rendszeres módszer:**
 >
 > Doboz szövege.

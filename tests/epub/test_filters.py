@@ -14,7 +14,7 @@ def render(md: str) -> str:
     # Ugyanazok a kapcsolók, mint a build.sh-ban.
     cmd = ["pandoc", "-f", "markdown-smart-implicit_figures", "-t", "html",
            "--wrap=none", "--shift-heading-level-by=-1"]
-    for f in ("chapter.lua", "protocol.lua", "sidebar.lua"):
+    for f in ("chapter.lua", "protocol.lua", "sidebar.lua", "pseudohead.lua"):
         cmd += ["--lua-filter", str(FILTERS / f)]
     return subprocess.run(cmd, input=md, capture_output=True, text=True, check=True).stdout
 
@@ -29,6 +29,7 @@ def test_chapter_opener(html):
     assert '<span class="chapter-label">1. fejezet</span>' in html
     assert '<span class="chapter-title">Alvásprotokollok</span>' in html
     assert 'epub:type="chapter"' in html
+    assert 'data-title="1. fejezet: Alvásprotokollok"' in html
 
 
 def test_epub_types(html):
@@ -41,6 +42,7 @@ def test_protocols(html):
     assert '<span class="protocol-num">2</span>' in html
     assert '<span class="protocol-label">stresszszabályozási protokoll</span>' in html
     assert html.count("protocol-num") == 3
+    assert 'data-title="2. stresszszabályozási protokoll: Hidegterhelés"' in html
 
 
 def test_non_protocol_sections_demoted(html):
@@ -76,3 +78,10 @@ def test_heading_text_intact_for_toc(html):
     import re
     h2 = re.search(r'<h2[^>]*class="protocol"[^>]*>(.*?)</h2>', html, re.S).group(1)
     assert re.sub(r"<[^>]+>", "", h2) == "1. alvásprotokoll: Nézz napfényt ébredés után"
+
+
+def test_run_heads(html):
+    assert html.count('<div class="run-head">') == 1
+    assert '<div class="run-head">\n<p><strong>MIELŐTT KELET FELÉ UTAZOL</strong></p>' in html
+    # A dobozcím nem lesz run-head.
+    assert html.count('class="sidebar-title"') == 1
