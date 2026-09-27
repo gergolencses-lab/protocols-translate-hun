@@ -39,11 +39,15 @@ A repóban lévő PDF az eredeti Simon & Schuster e-könyvből készült export 
 1. **Eltérő fejezetcím.** A törzsszövegben „3. fejezet: Protokollok a stressz szabályozásához”, a Jegyzetekben „3. fejezet: Stresszkezelési protokollok”.
 2. **Eltérő alternatív szövegek az emblémánál:** „Fejezetembléma”, „Fejezet emblémája”, „Fejezetjelvény” → legyen mind „Fejezetembléma”.
 3. **Tipográfia.** 9 szóközös kötőjel (` - ` a ` – ` helyett) és 4 angol ezres tagolás (`1,000`) a törzsszövegben.
-4. **Hiányzik a D8 szerinti magyar megjegyzés** a Copyright fölül: „Nem hivatalos, személyes használatra készült fordítás.”
+4. **Hiányzik a D8/E12 szerinti magyar megjegyzés.** Két helyre kell: (a) a Copyright fölé, (b) a „Jogi nyilatkozat” elé egy új, rövid `## Megjegyzés a fordításhoz` szakaszba. A szöveg: „Nem hivatalos, személyes használatra készült fordítás. Használjátok egészséggel, de vegyétek meg az eredeti könyvet mindenképp!”
 
 ---
 
-## 0. feladat – Döntések (🛑 KAPU: az ember hagyja jóvá)
+## 0. feladat – Döntések ✔ (az ember 2026-09-27-én jóváhagyta)
+
+**Minden javaslat elfogadva.** Az E12-höz az ember kiegészítése: fordító neve nem szerepel; helyette a könyvben és a metaadatban ez a megjegyzés áll:
+
+> Nem hivatalos, személyes használatra készült fordítás. Használjátok egészséggel, de vegyétek meg az eredeti könyvet mindenképp!
 
 | ID | Kérdés | Javaslat | Indoklás / alternatíva |
 |---|---|---|---|
@@ -58,9 +62,9 @@ A repóban lévő PDF az eredeti Simon & Schuster e-könyvből készült export 
 | **E9** | Kötött szóköz | **Igen**: szám és mértékegység között (289 hely, pl. `10 mg`, `18 °C`, `90%` előtt), valamint sorszám után kisbetűs szó előtt (`1. alvásprotokoll`) | Ne törjön a sor „10” és „mg” közé. |
 | **E10** | Betűtípus | **Nem ágyazunk be**; általános `serif` a szöveghez, `sans-serif` a címekhez | Az olvasó a saját betűtípusát választhatja. A beépített betűtípusok (Bookerly, Kobo-fontok, Literata) tudják az ő/ű betűt. Alternatíva: Literata beágyazása (+~1 MB). |
 | **E11** | Bekezdés | **Sorkizárt, első soros behúzás, bekezdésköz nélkül** (mint az eredetiben) | Alternatíva: balra zárt + bekezdésköz. |
-| **E12** | Metaadat | Cím: *Protokollok*; alcím: *Használati útmutató az emberi testhez*; szerző: Andrew D. Huberman; közreműködő: Jessica Wapner; nyelv: `hu`; azonosító: egyszer generált `urn:uuid` (nem az angol ISBN); jogok: „Nem hivatalos, személyes használatra készült fordítás.” | Az ember döntse el: szerepeljen-e fordító (és ha igen, ki), és hol álljon a megjegyzés (a címoldal után és/vagy a Copyright fölött). |
+| **E12** | Metaadat | Cím: *Protokollok*; alcím: *Használati útmutató az emberi testhez*; szerző: Andrew D. Huberman; közreműködő: Jessica Wapner; nyelv: `hu`; azonosító: egyszer generált `urn:uuid` (nem az angol ISBN); **fordító: nincs megnevezve**; `rights` és `description`: a fenti megjegyzés | **Elfogadva.** A megjegyzés két helyen jelenik meg: a címoldal utáni rövid oldalon és a Copyright fölött. |
 
-- [ ] **1. lépés:** Írd a fenti táblát a `book/epub/DECISIONS.md` fájlba. Legyen benne egy `Döntés:` oszlop, üresen. Commit, majd 🛑 **KAPU**: kérd meg az embert, hogy töltse ki. Ha nem válaszol, a „Javaslat” oszlop szerint haladj, és ezt jelezd.
+- [x] **1. lépés:** A döntések a `book/epub/DECISIONS.md` fájlban vannak, kitöltve. Ha a végrehajtás közben egy döntés módosul (pl. az E7 tartalomjegyzék-kérdése, 3. feladat), azt ott kell rögzíteni.
 
 ---
 
@@ -103,7 +107,7 @@ dist/protokollok.epub              # kimenet (gitignore)
 - [ ] **2. lépés:** Javítsd a „Hibák a magyar Markdownban” szakasz 1–4. pontját. A 3. ponthoz futtasd: `grep -nE '[^ ] - [^ ]|[0-9]{1,3},[0-9]{3}' book/protocols-hu.md | grep -v '^\s*-'` (csak a Jegyzetek előtti találatok számítanak; a hivatkozások angolok, azokhoz nem nyúlunk).
 - [ ] **3. lépés:** Ellenőrzés:
   - `grep -c '!\[Fejezetembléma\]' book/protocols-hu.md` → `7`
-  - `grep -c 'Nem hivatalos, személyes használatra készült fordítás' book/protocols-hu.md` → legalább `1`
+  - `grep -c 'vegyétek meg az eredeti könyvet mindenképp' book/protocols-hu.md` → `2`
   - `grep -n '^#\{2,3\} 3\. fejezet' book/protocols-hu.md` → két azonos cím
 - [ ] **4. lépés:** Commit: `book: magyar forrás + konverzió előtti javítások`.
 
