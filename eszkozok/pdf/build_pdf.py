@@ -52,7 +52,10 @@ def build_toc(body: str) -> str:
         if level == "level2" and "protocol" not in classes:
             continue
         text = html.escape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", html.unescape(inner))).strip())
-        items.append(f'<li class="toc-{level[-1]}"><a href="#{sid}">{text}</a></li>')
+        head, _, tail = text.rpartition(" ")
+        tail_span = f'<span class="toc-tail" data-target="#{sid}">{tail}</span>'
+        link_body = f"{head} {tail_span}" if head else tail_span
+        items.append(f'<li class="toc-{level[-1]}"><a href="#{sid}">{link_body}</a></li>')
     return '<nav class="toc"><h1>Tartalom</h1><ol>' + "".join(items) + "</ol></nav>"
 
 
